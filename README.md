@@ -2,6 +2,14 @@
 
  Read Review is a website to write and publish reviews of books and read other users' reviews of books.
 
+## State of development
+
+ - App can be run locally
+ - Currently two pages are available: Homepage and review creation
+
+### Features
+ - User can go to from homepage to review creation via a link
+
 ## Main features
 
  - ### Users

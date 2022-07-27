@@ -9,8 +9,10 @@
 
 ### Latest improvements
  - App can be run locally
- - Currently two pages are available: Homepage and review creation
- - User can go to from homepage to review creation via a link
+ - Currently three pages are available: Homepage, review creation and author creation
+ - User can change between the pages via links
+ - User can create a new author to author database
+ - Duplicate authors cannot be created
 
 ## Main features
 

@@ -3,7 +3,7 @@
  Read Review is a website to write and publish reviews of books and read other users' reviews of books.
 
 ## State of development
-[Changelog](/Read_Review/documentation/changelog.md) includes the progress of all main features.
+[Changelog](/Read-Review/blob/main/documentation/changelog.md) includes the progress of all main features.
 [Timesheet](/Read_Review/documentation/timesheet.md) includes used hours and dates
 
 

@@ -1,27 +1,24 @@
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
     username TEXT UNIQUE,
     password TEXT,
-    role INTEGER
+    role INTEGER 
 );
-
-CREATE TABLE authors (
+CREATE TABLE IF NOT EXISTS authors (
     id SERIAL PRIMARY KEY,
     first_name TEXT,
-    last_name TEXT,
+    last_name TEXT 
 );
-
-CREATE TABLE books (
+CREATE TABLE IF NOT EXISTS books (
     id SERIAL PRIMARY KEY,
-    author_id INTEGER REFERENCES authors (id),
-    name TEXT
+    author_id INTEGER REFERENCES authors,
+    title TEXT 
 );
-
-CREATE TABLE reviews (
+CREATE TABLE IF NOT EXISTS reviews (
     id SERIAL PRIMARY KEY,
-    book_id INTEGER REFERENCES books (id),
+    book_id INTEGER REFERENCES books,
     review TEXT,
     rating INTEGER,
-    created_by_id INTEGER REFERENCES users (id)
-    created_at TIMESTAMP
+    created_by_id INTEGER REFERENCES users,
+    created_at TIMESTAMP 
 );

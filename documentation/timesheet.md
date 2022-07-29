@@ -2,4 +2,5 @@
 | ------ | ----- | ------------------------------------------------------ |
 | 26.7.  | 4     | Starting project, directory structure                  |
 | 27.7.  | 3     | Database structure, authors can be created to database |
-| Total  | 7     |                                                        |
+| 29.7.  | 2     | Books can be added to database                         |
+| Total  | 9     |                                                        |

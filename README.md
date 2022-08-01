@@ -1,6 +1,7 @@
 # Read Review
 
  Read Review is a website to write and publish reviews of books and read other users' reviews of books.
+ The app is hosted on heroku at https://tsoha-read-review.herokuapp.com/
 
 ## State of development
 [Changelog](https://github.com/evahteri/Read-Review/blob/main/documentation/changelog.md) includes the progress of all main features.
@@ -8,8 +9,8 @@
 
 
 ### Latest improvements
- - App can be run locally
- - Currently three pages are available: Homepage, review creation and author creation
+ - App can be run on heroku
+ - Currently three pages are available: Homepage, review creation, author creation and book creation
  - User can change between the pages via links
  - User can create a new author to author database
  - Duplicate authors cannot be created

@@ -11,11 +11,12 @@
 ### Latest improvements
  - App can be run on heroku
  - Currently three pages are available: Homepage, review creation, author creation and book creation
+ - Review creation under development, link creates an error
  - User can change between the pages via links
  - User can create a new author to author database
  - Duplicate authors cannot be created
  - Books can be created by user
- - Bookd can be searched by title
+ - Books can be searched by title
 
 ## Main features
 

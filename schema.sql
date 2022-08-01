@@ -20,5 +20,5 @@ CREATE TABLE IF NOT EXISTS reviews (
     review TEXT,
     rating INTEGER,
     created_by_id INTEGER REFERENCES users,
-    created_at TIMESTAMP 
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

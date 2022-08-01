@@ -15,6 +15,11 @@ class AuthorRepository:
         sql = """SELECT id FROM authors
         WHERE first_name=:first_name AND last_name=:last_name"""
         return self._db.session.execute(sql,values).fetchone()[0]
+    
+    def get_author_by_id(self, id):
+        values = {"id":id}
+        sql = """SELECT first_name, last_name FROM authors WHERE id=:id"""
+        return self._db.session.execute(sql, values).fetchall()
         
 
     def create_author(self, first_name, last_name):

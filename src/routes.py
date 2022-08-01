@@ -8,9 +8,14 @@ from services.book_service import book_service
 def index():
     return render_template("homepage.html")
 
+@app.route("/new_review")
+def new_review():
+    return render_template("new_review.html")
+
 @app.route("/create_review")
 def create_review():
-    return render_template("create_review.html")
+    #TODO
+    pass
 
 @app.route("/new_author")
 def new_author():
@@ -35,3 +40,8 @@ def create_book():
     book_service.create_new_book(author_first_name, author_last_name, title)
     return redirect("/new_book")
 
+@app.route("/book_search_results")
+def book_search_results():
+    query = request.args["query"]
+    results = book_service.search_books(query)
+    return render_template("book_results.html", results=results)

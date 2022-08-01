@@ -15,4 +15,7 @@ class BookService:
             id = self._author_repository.get_author_id(author_first_name, author_last_name)
             self._book_repository.create_book(id, title)
 
+    def search_books(self, query):
+        return self._book_repository.search_books(query)
+
 book_service = BookService()

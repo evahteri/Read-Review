@@ -15,6 +15,7 @@
  - User can create a new author to author database
  - Duplicate authors cannot be created
  - Books can be created by user
+ - Bookd can be searched by title
 
 ## Main features
 

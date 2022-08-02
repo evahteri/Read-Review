@@ -21,7 +21,6 @@ class AuthorRepository:
         sql = """SELECT first_name, last_name FROM authors WHERE id=:id"""
         return self._db.session.execute(sql, values).fetchall()
         
-
     def create_author(self, first_name, last_name):
         if not self.check_if_author_exists(first_name, last_name):
 

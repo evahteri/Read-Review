@@ -1,7 +1,8 @@
-from flask import render_template, request, redirect
+from flask import render_template, request, redirect, session
 from app import app
 from services.author_service import author_service
 from services.book_service import book_service
+from services.user_service import user_service
 
 
 @app.route("/")
@@ -45,3 +46,15 @@ def book_search_results():
     query = request.args["query"]
     results = book_service.search_books(query)
     return render_template("book_results.html", results=results)
+
+@app.route("/sign_up")
+def sign_up():
+    return render_template("sign_up.html")
+
+@app.route("/create_user", methods=["POST"])
+def create_user():
+    username = request.form["username"]
+    password = request.form["password"]
+    role = request.form["role"]
+    user_service.create_user(username, password, role)
+    return redirect("/")

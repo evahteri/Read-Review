@@ -4,7 +4,7 @@
 | Admin can create new books           |  Finished        |
 | User can be created                  |  Started         |
 | User can sign in                     |  Started         |
-| Different roles between users        |  Not started     |
+| Different roles between users        |  Started         |
 | User can create a review             |  Not started     |
 | Star rating                          |  Not started     |
 | Admin can delete reviews             |  Not started     |

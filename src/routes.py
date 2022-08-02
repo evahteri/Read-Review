@@ -58,3 +58,23 @@ def create_user():
     role = request.form["role"]
     user_service.create_user(username, password, role)
     return redirect("/")
+
+@app.route("/sign_out")
+def sign_out():
+    if session["username"]:
+        del session["username"]
+    if session["role"]:
+        del session["role"]
+    return redirect("/")
+
+@app.route("/sign_in")
+def sign_in():
+    return render_template("sign_in.html")
+
+@app.route("/sign_user_in", methods=["POST"])
+def sign_user_in():
+    username = request.form["username"]
+    password = request.form["password"]
+    user_service.sign_in(username, password)
+    return redirect("/")
+

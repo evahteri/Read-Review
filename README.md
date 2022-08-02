@@ -8,9 +8,10 @@
 [Timesheet](https://github.com/evahteri/Read-Review/blob/main/documentation/timesheet.md) includes used hours and dates
 
 
-### Latest improvements
+### Latest improvement
+ - Users can be created
+ - Sign in function works only for admins, working on a fix
  - App can be run on heroku
- - Currently three pages are available: Homepage, review creation, author creation and book creation
  - Review creation under development, link creates an error
  - User can change between the pages via links
  - User can create a new author to author database

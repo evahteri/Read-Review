@@ -20,17 +20,21 @@ class UserRepository:
         self._db.session.execute(sql, values)
         self._db.session.commit()
     
-    def check_username_and_password(self,username, password):
+    def _check_username_and_password(self,username, password):
         values = {"username":username}
-        sql = """SELECT id, password FROM users WHERE username=:username"""
+        sql = """SELECT id, username, password, role FROM users WHERE username=:username"""
         user = self._db.session.execute(sql, values).fetchone()
         if not user:
             return False
         else:
             hash_password = user.password
             if check_password_hash(hash_password, password):
-                return True
+                return user
             else:
                 return False
+    
+    def sign_in(self, username, password):
+        return self._check_username_and_password(username, password)
+
 
 user_repository = UserRepository()

@@ -2,8 +2,13 @@
 <h1>Homepage</h1>
 <h2>Welcome to Read Review</h2>
 <p>Read Review is a website to create reviews of books</p>
+{% if session.username %}
+<p>You are signed in as {{ session.username }}</p>
+<a href="/sign_out"> Sign out</a>
+{% else %}
 <a href="/sign_up">Signup</a>
 <a href="/sign_in">Sign in</a>
+{% endif %}
 <form action="/book_search_results" method="GET">
 Search for books <input type="text" name="query">
 <br>
@@ -12,6 +17,8 @@ Search for books <input type="text" name="query">
 <p>Choose function:</p>
 <ul>
     <li><a href="/create_review">Create a review</a></li>
+    {% if session.role %}
     <li><a href="/new_author">Create an author</a></li>
     <li><a href="/new_book">Add a new book</a></li>
+    {% endif %}
 </ul>

@@ -33,9 +33,18 @@ class UserService:
         if self._check_user_does_not_exist(username):
             if self._check_password_validity(password):
                 self._user_repository.create_user(username, password, role)
-                print("User created")
+                session["username"] = username
+                session["role"] = role
         else:
-            print("problem")
             return False
+    
+    def sign_in(self, username, password):
+        user = self._user_repository.sign_in(username, password)
+        if user:
+            session["username"] = user.username
+            if user.role == 0:
+                del session["role"]
+            if user.role == 1:
+                session["role"] = "admin"
 
 user_service = UserService()

@@ -16,7 +16,9 @@ Search for books <input type="text" name="query">
 </form>
 <p>Choose function:</p>
 <ul>
+    {% if session.username %}
     <li><a href="/create_review">Create a review</a></li>
+    {% endif %}
     {% if session.role %}
     <li><a href="/new_author">Create an author</a></li>
     <li><a href="/new_book">Add a new book</a></li>

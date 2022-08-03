@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, session
+from flask import render_template, request, redirect, session, abort
 from app import app
 from services.author_service import author_service
 from services.book_service import book_service
@@ -26,6 +26,8 @@ def new_author():
 def create_author():
     first_name = request.form["first_name"]
     last_name = request.form["last_name"]
+    if session["csrf_token"] != request.form["csrf_token"]:
+        abort(403)
     author_service.create_author(first_name, last_name)
     return  redirect("/new_author")
 
@@ -38,6 +40,8 @@ def create_book():
     author_first_name = request.form["author_first_name"]
     author_last_name = request.form["author_last_name"]
     title = request.form["title"]
+    if session["csrf_token"] != request.form["csrf_token"]:
+        abort(403)
     book_service.create_new_book(author_first_name, author_last_name, title)
     return redirect("/new_book")
 

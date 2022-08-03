@@ -24,7 +24,6 @@ class UserRepository:
         values = {"username":username}
         sql = """SELECT id, username, password, role FROM users WHERE username=:username"""
         user = self._db.session.execute(sql, values).fetchone()
-        print(user)
         if not user:
             return False
         else:

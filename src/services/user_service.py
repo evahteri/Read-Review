@@ -1,4 +1,5 @@
 from flask import session
+import secrets
 
 from repositories.user_repository import (user_repository as default_user_repository)
 
@@ -43,6 +44,7 @@ class UserService:
         if user:
             session["username"] = user.username
             session["role"] = user.role
+            session["csrf_token"] = secrets.token_hex(16)
         else:
             print("invalid")
 

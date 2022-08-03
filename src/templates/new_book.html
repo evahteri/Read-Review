@@ -10,5 +10,8 @@
     Title <br>
     <textarea name="title" cols="15" rows="1"></textarea>
 <p>
+<p>
+    <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+</p>
     <input type="submit" value="Add">
 </form>

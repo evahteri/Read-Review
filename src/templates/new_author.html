@@ -1,5 +1,8 @@
+<!doctype html>
+{% extends "layout.html" %}
+{% block title %}Add a new author{% endblock %}
+{% block content %}
 <form action="/create_author" method="POST">
-    <p>Create a new author</p>
 <p>
     First name <br>
     <textarea name="first_name" cols="15" rows="1"></textarea>
@@ -12,3 +15,4 @@
 </p>
     <input type="submit" value="Publish">
 </form>
+{% endblock %}

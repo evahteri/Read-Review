@@ -1,4 +1,7 @@
-<h1>Sign up</h1>
+<!doctype html>
+{% extends "layout.html" %}
+{% block title %}Sign up{% endblock %}
+{% block content %}
 <form action="/create_user" method="POST">
     <p>Create a new user</p>
 <p>
@@ -17,3 +20,4 @@
 <p>
     <input type="submit" value="Create user">
 </form>
+{% endblock %}

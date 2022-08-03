@@ -1,5 +1,8 @@
+<!doctype html>
+{% extends "layout.html" %}
+{% block title %}Add a new book{% endblock %}
+{% block content %}
 <form action="/create_book" method="POST">
-    <p>Add a new book</p>
 <p>
     Author first name <br>
     <textarea name="author_first_name" cols="15" rows="1"></textarea>
@@ -15,3 +18,4 @@
 </p>
     <input type="submit" value="Add">
 </form>
+{% endblock %}

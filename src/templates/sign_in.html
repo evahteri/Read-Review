@@ -1,4 +1,7 @@
-<h1>Sign in</h1>
+<!doctype html>
+{% extends "layout.html" %}
+{% block title %}Sign in{% endblock %}
+{% block content %}
 <form action="/sign_user_in" method="POST">
 <p>
     Username <br>
@@ -11,3 +14,4 @@
 <p>
     <input type="submit" value="Sign in">
 </form>
+{% endblock %}

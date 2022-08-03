@@ -10,13 +10,13 @@
 
 ### Latest improvement
  - Users can be created
- - Sign in function works only for admins, working on a fix
+ - Sign in function works
  - App can be run on heroku
  - Review creation under development, link creates an error
  - User can change between the pages via links
- - User can create a new author to author database
+ - Admin can create a new author to author database
  - Duplicate authors cannot be created
- - Books can be created by user
+ - Books can be created by admin
  - Books can be searched by title
 
 ## Main features

@@ -3,8 +3,8 @@
 | User can see all reviews             |  Not started     |
 | Admin can create new books           |  Finished        |
 | User can be created                  |  Started         |
-| User can sign in                     |  Started         |
-| Different roles between users        |  Started         |
+| User can sign in                     |  Finished        |
+| Different roles between users        |  Finished        |
 | User can create a review             |  Not started     |
 | Star rating                          |  Not started     |
 | Admin can delete reviews             |  Not started     |

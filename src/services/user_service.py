@@ -42,9 +42,8 @@ class UserService:
         user = self._user_repository.sign_in(username, password)
         if user:
             session["username"] = user.username
-            if user.role == 0:
-                del session["role"]
-            if user.role == 1:
-                session["role"] = "admin"
+            session["role"] = user.role
+        else:
+            print("invalid")
 
 user_service = UserService()

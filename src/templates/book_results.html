@@ -1,7 +1,11 @@
-<h1>Search results</h1>
+<!doctype html>
+{% extends "layout.html" %}
+{% block title %}Search results{% endblock %}
+{% block content %}
 <hr>
 {% for result in results %}
 Author: {{ result.first_name }} {{ result.last_name }}<br>
 Title: {{ result.title }} <br>
 <hr>
 {% endfor %}
+{% endblock %}

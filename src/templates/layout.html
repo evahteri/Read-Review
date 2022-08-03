@@ -1,16 +1,20 @@
 <!doctype html>
-<title>Read Review - {% block title %}{% endblock %}</title>
-<h1>Read Review</h1>
-<a href="/">Homepage</a>
-{% with messages = get_flashed_messages() %}
-{% if messages %}
-<ul class=flashes>
-    {% for message in messages %}
-      <li>{{ message }}</li>
-    {% endfor %}
-    </ul>
-  {% endif %}
-{% endwith %}
-<hr>
-{% block content %}{% endblock %}
-<hr>
+<link rel="stylesheet" href="static/css/main.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<body>
+  <title>Read Review - {% block title %}{% endblock %}</title>
+  <h1>Read Review</h1>
+  <a href="/">Homepage</a>
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  <ul class=flashes>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+  <hr>
+  {% block content %}{% endblock %}
+  <hr>
+</body>

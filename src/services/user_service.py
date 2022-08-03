@@ -31,13 +31,16 @@ class UserService:
 
     
     def create_user(self, username, password, role):
-        if self._check_user_does_not_exist(username):
+        if not self._user_repository.search_user(username):
             if self._check_password_validity(password):
                 self._user_repository.create_user(username, password, role)
                 session["username"] = username
                 session["role"] = role
+                return True
+            else:
+                return "invalid password"
         else:
-            return False
+            return "username exists"
     
     def sign_in(self, username, password):
         user = self._user_repository.sign_in(username, password)
@@ -45,7 +48,8 @@ class UserService:
             session["username"] = user.username
             session["role"] = user.role
             session["csrf_token"] = secrets.token_hex(16)
+            return True
         else:
-            print("invalid")
+            return False
 
 user_service = UserService()

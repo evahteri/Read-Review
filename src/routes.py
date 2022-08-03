@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, session, abort
+from flask import render_template, request, redirect, session, abort, flash
 from app import app
 from services.author_service import author_service
 from services.book_service import book_service
@@ -60,9 +60,15 @@ def create_user():
     username = request.form["username"]
     password = request.form["password"]
     role = request.form["role"]
-    user_service.create_user(username, password, role)
-    return redirect("/")
-
+    if user_service.create_user(username, password, role) == "username exists":
+        flash("This username already exists")
+        return redirect("/sign_up")
+    if user_service.create_user(username, password, role) == "invalid password":
+        flash("Please provide a password that is more than 8 characters long, includes at least one number, one special character , one lower and one uppercase character.")
+        return redirect("/sign_up")
+    if user_service.create_user(username, password, role):
+        flash("User created successfully!")
+        return redirect("/")
 @app.route("/sign_out")
 def sign_out():
     if session["username"]:
@@ -79,6 +85,9 @@ def sign_in():
 def sign_user_in():
     username = request.form["username"]
     password = request.form["password"]
-    user_service.sign_in(username, password)
-    return redirect("/")
+    if user_service.sign_in(username, password):
+        return redirect("/")
+    if not user_service.sign_in(username, password):
+        flash("Invalid username or password")
+        return redirect("/sign_in")
 

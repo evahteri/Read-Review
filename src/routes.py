@@ -55,9 +55,11 @@ def create_user():
         flash("This username already exists")
         return redirect("/sign_up")
     if user_service.create_user(username, password, role) == "invalid password":
-        flash("Please provide a password that is more than 8 characters long, includes at least one number, one special character , one lower and one uppercase character.")
+        flash("""Please provide a password that is more than 8 characters long, 
+        includes at least one number, one special character , 
+        one lower and one uppercase character.""")
         return redirect("/sign_up")
-    if user_service.create_user(username, password, role):
+    if user_service.create_user(username, password, role) is True:
         flash("User created successfully!")
         return redirect("/")
 @app.route("/sign_out")
@@ -88,7 +90,9 @@ def new_review(book_id):
     author_first_name = book.first_name
     author_last_name = book.last_name
     title = book.title
-    return render_template("new_review.html", book_id=book_id, author_first_name=author_first_name, author_last_name=author_last_name, title=title)
+    return render_template("new_review.html", book_id=book_id, 
+    author_first_name=author_first_name, 
+    author_last_name=author_last_name, title=title)
 
 @app.route("/create_review")
 def create_review():

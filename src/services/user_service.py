@@ -1,6 +1,8 @@
 import secrets
 from flask import session
-from repositories.user_repository import (user_repository as default_user_repository)
+from repositories.user_repository import (
+    user_repository as default_user_repository)
+
 
 class UserService:
     def __init__(self, user_repository=default_user_repository):
@@ -47,5 +49,6 @@ class UserService:
             return True
         else:
             return False
+
 
 user_service = UserService()

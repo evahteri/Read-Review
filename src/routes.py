@@ -9,9 +9,11 @@ from services.user_service import user_service
 def index():
     return render_template("homepage.html")
 
+
 @app.route("/new_author")
 def new_author():
     return render_template("new_author.html")
+
 
 @app.route("/create_author", methods=["POST"])
 def create_author():
@@ -20,11 +22,13 @@ def create_author():
     if session["csrf_token"] != request.form["csrf_token"]:
         abort(403)
     author_service.create_author(first_name, last_name)
-    return  redirect("/new_author")
+    return redirect("/new_author")
+
 
 @app.route("/new_book")
 def new_book():
     return render_template("new_book.html")
+
 
 @app.route("/create_book", methods=["POST"])
 def create_book():
@@ -36,15 +40,18 @@ def create_book():
     book_service.create_new_book(author_first_name, author_last_name, title)
     return redirect("/new_book")
 
+
 @app.route("/book_search_results")
 def book_search_results():
     query = request.args["query"]
     results = book_service.search_books(query)
     return render_template("book_results.html", results=results)
 
+
 @app.route("/sign_up")
 def sign_up():
     return render_template("sign_up.html")
+
 
 @app.route("/create_user", methods=["POST"])
 def create_user():
@@ -62,6 +69,8 @@ def create_user():
     if user_service.create_user(username, password, role) is True:
         flash("User created successfully!")
         return redirect("/")
+
+
 @app.route("/sign_out")
 def sign_out():
     if session["username"]:
@@ -70,9 +79,11 @@ def sign_out():
         del session["role"]
     return redirect("/")
 
+
 @app.route("/sign_in")
 def sign_in():
     return render_template("sign_in.html")
+
 
 @app.route("/sign_user_in", methods=["POST"])
 def sign_user_in():
@@ -84,17 +95,19 @@ def sign_user_in():
         flash("Invalid username or password")
         return redirect("/sign_in")
 
+
 @app.route("/books/<int:book_id>/new_review")
 def new_review(book_id):
     book = book_service.get_book_by_id(book_id)
     author_first_name = book.first_name
     author_last_name = book.last_name
     title = book.title
-    return render_template("new_review.html", book_id=book_id, 
-    author_first_name=author_first_name, 
-    author_last_name=author_last_name, title=title)
+    return render_template("new_review.html", book_id=book_id,
+                           author_first_name=author_first_name,
+                           author_last_name=author_last_name, title=title)
+
 
 @app.route("/create_review")
 def create_review():
-    #TODO
+    # TODO
     pass

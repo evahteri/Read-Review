@@ -1,7 +1,8 @@
 <!doctype html>
 {% extends "layout.html" %}
-{% block title %}Publish a review{% endblock %}
+{% block title %}New review{% endblock %}
 {% block content %}
+<h1>New review</h1>
 <form action="/create_review" method="POST">
     <p>You are writing a review for a book called {{ title }} from {{ author_first_name }} {{ author_last_name }}</p>
 <p>

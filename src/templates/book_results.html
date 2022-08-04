@@ -2,6 +2,7 @@
 {% extends "layout.html" %}
 {% block title %}Search results{% endblock %}
 {% block content %}
+<h2>Search results</h2>
 <hr>
 {% for result in results %}
 Author: {{ result.first_name }} {{ result.last_name }}<br>

@@ -8,7 +8,7 @@
 <p>You are signed in as {{ session.username }}</p>
 <a href="/sign_out"> Sign out</a>
 {% else %}
-<a href="/sign_up">Signup</a> <br>
+<a href="/sign_up">Sign up</a> <br>
 <a href="/sign_in">Sign in</a>
 {% endif %}
 <p>Start by searching a book you want to review</p>
@@ -17,7 +17,7 @@ Search for books <input type="text" name="query">
 <br>
 <input type="submit" value="Search">
 </form>
-{% if session.role %}
+{% if session.role == 1 %}
 <p>Choose admin function:</p>
 <ul>
     <li><a href="/new_author">Create an author</a></li>

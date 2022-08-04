@@ -66,9 +66,9 @@ def create_user():
         includes at least one number, one special character , 
         one lower and one uppercase character.""")
         return redirect("/sign_up")
-    if user_service.create_user(username, password, role) is True:
+    if user_service.create_user(username, password, role):
         flash("User created successfully!")
-        return redirect("/")
+        return redirect("/sign_in")
 
 
 @app.route("/sign_out")

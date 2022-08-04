@@ -34,8 +34,6 @@ class UserService:
         if not self._user_repository.search_user(username):
             if self._check_password_validity(password):
                 self._user_repository.create_user(username, password, role)
-                session["username"] = username
-                session["role"] = role
                 return True
             return "invalid password"
         return "username exists"

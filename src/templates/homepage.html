@@ -8,20 +8,18 @@
 <p>You are signed in as {{ session.username }}</p>
 <a href="/sign_out"> Sign out</a>
 {% else %}
-<a href="/sign_up">Signup</a>
+<a href="/sign_up">Signup</a> <br>
 <a href="/sign_in">Sign in</a>
 {% endif %}
+<p>Start by searching a book you want to review</p>
 <form action="/book_search_results" method="GET">
 Search for books <input type="text" name="query">
 <br>
 <input type="submit" value="Search">
 </form>
-<p>Choose function:</p>
+{% if session.role %}
+<p>Choose admin function:</p>
 <ul>
-    {% if session.username %}
-    <li><a href="/create_review">Create a review</a></li>
-    {% endif %}
-    {% if session.role %}
     <li><a href="/new_author">Create an author</a></li>
     <li><a href="/new_book">Add a new book</a></li>
     {% endif %}

@@ -5,4 +5,6 @@
 | 29.7.  | 2     | Books can be added to database                         |
 | 1.8.   | 3     | Search function for books, heroku config               |
 | 2.8.   | 3     | Sign in, sign up functions                             |
-| Total  | 15    |                                                        |
+| 3.8.   | 3     | Errors, css, security improvements                     |
+| 4.8.   | 4     | Search function, review functionality                  |
+| Total  | 22    |                                                        |

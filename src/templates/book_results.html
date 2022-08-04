@@ -6,6 +6,7 @@
 {% for result in results %}
 Author: {{ result.first_name }} {{ result.last_name }}<br>
 Title: {{ result.title }} <br>
+<a href="/books/{{ result.id }}/new_review">Review this book</a>
 <hr>
 {% endfor %}
 {% endblock %}

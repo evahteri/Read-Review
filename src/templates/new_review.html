@@ -1,5 +1,9 @@
+<!doctype html>
+{% extends "layout.html" %}
+{% block title %}Publish a review{% endblock %}
+{% block content %}
 <form action="/create_review" method="POST">
-    <p>Publish a review</p>
+    <p>You are writing a review for a book called {{ title }} from {{ author_first_name }} {{ author_last_name }}</p>
 <p>
     Title <br>
     <textarea name="title" cols="15" rows="1"></textarea>
@@ -12,3 +16,4 @@
 </p>
     <input type="submit" value="Publish">
 </form>
+{% endblock %}

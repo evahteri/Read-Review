@@ -17,5 +17,9 @@ class BookService:
 
     def search_books(self, query):
         return self._book_repository.search_books(query)
+    
+    def get_book_by_id(self, book_id):
+        return self._book_repository.get_book_by_id(book_id)
+    
 
 book_service = BookService()

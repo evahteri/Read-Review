@@ -9,15 +9,6 @@ from services.user_service import user_service
 def index():
     return render_template("homepage.html")
 
-@app.route("/new_review")
-def new_review():
-    return render_template("new_review.html")
-
-@app.route("/create_review")
-def create_review():
-    #TODO
-    pass
-
 @app.route("/new_author")
 def new_author():
     return render_template("new_author.html")
@@ -91,3 +82,15 @@ def sign_user_in():
         flash("Invalid username or password")
         return redirect("/sign_in")
 
+@app.route("/books/<int:book_id>/new_review")
+def new_review(book_id):
+    book = book_service.get_book_by_id(book_id)
+    author_first_name = book.first_name
+    author_last_name = book.last_name
+    title = book.title
+    return render_template("new_review.html", book_id=book_id, author_first_name=author_first_name, author_last_name=author_last_name, title=title)
+
+@app.route("/create_review")
+def create_review():
+    #TODO
+    pass

@@ -18,7 +18,8 @@ CREATE TABLE IF NOT EXISTS reviews (
     id SERIAL PRIMARY KEY,
     book_id INTEGER REFERENCES books,
     review TEXT,
+    title TEXT,
     rating INTEGER,
     created_by_id INTEGER REFERENCES users,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );

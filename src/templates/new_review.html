@@ -3,7 +3,7 @@
 {% block title %}New review{% endblock %}
 {% block content %}
 <h1>New review</h1>
-<form action="/create_review" method="POST">
+<form action="/books/{{ book_id }}/create_review" method="POST">
     <p>You are writing a review for a book called {{ title }} from {{ author_first_name }} {{ author_last_name }}</p>
 <p>
     Title <br>
@@ -12,6 +12,8 @@
     Write a review <br>
     <textarea name="review" cols="40" rows="30"></textarea>
 <p>
+    Star rating <br>
+    <input type="number" name="rating" min="1" max="5">
 <p>
     <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
 </p>

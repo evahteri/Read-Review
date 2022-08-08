@@ -7,4 +7,5 @@
 | 2.8.   | 3     | Sign in, sign up functions                             |
 | 3.8.   | 3     | Errors, css, security improvements                     |
 | 4.8.   | 4     | Search function, review functionality                  |
-| Total  | 22    |                                                        |
+| 8.8.   | 3     | Review creation                                        |
+| Total  | 25    |                                                        |

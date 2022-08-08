@@ -12,10 +12,6 @@ class BookRepository:
         self._db.session.execute(sql, values)
         self._db.session.commit()
 
-    def get_all_books(self):
-        sql = """SELECT * FROM books"""
-        return self._db.session.execute(sql).fetchall()
-
     def search_books(self, query):
         sql = """SELECT A.first_name, A.last_name, B.id, B.title
         FROM books B, authors A 

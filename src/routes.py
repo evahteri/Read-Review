@@ -3,6 +3,7 @@ from app import app
 from services.author_service import author_service
 from services.book_service import book_service
 from services.user_service import user_service
+from services.review_service import review_service
 
 
 @app.route("/")
@@ -22,6 +23,7 @@ def create_author():
     if session["csrf_token"] != request.form["csrf_token"]:
         abort(403)
     author_service.create_author(first_name, last_name)
+    flash("Author created succesfully!")
     return redirect("/new_author")
 
 
@@ -38,6 +40,7 @@ def create_book():
     if session["csrf_token"] != request.form["csrf_token"]:
         abort(403)
     book_service.create_new_book(author_first_name, author_last_name, title)
+    flash("Book created succesfully!")
     return redirect("/new_book")
 
 
@@ -107,7 +110,12 @@ def new_review(book_id):
                            author_last_name=author_last_name, title=title)
 
 
-@app.route("/create_review")
-def create_review():
-    # TODO
-    pass
+@app.route("/books/<int:book_id>/create_review", methods=["POST"])
+def create_review(book_id):
+    title = request.form["title"]
+    review = request.form["review"]
+    rating = request.form["rating"]
+    book_id = book_id
+    review_service.create_review(title, review, rating, book_id)
+    flash("Review created successfully!")
+    return redirect("/")

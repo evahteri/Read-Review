@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import session
 from werkzeug.security import check_password_hash, generate_password_hash
 from db import (db as default_db)
 
@@ -12,6 +13,13 @@ class UserRepository:
         sql = """SELECT username FROM users
         WHERE username=:username"""
         return bool(self._db.session.execute(sql, values).fetchall())
+
+    def get_user_id(self):
+        values = {"username": session["username"]}
+        sql = """SELECT id FROM users
+        WHERE username=:username"""
+        result= self._db.session.execute(sql, values).fetchone()
+        return result.id
 
     def create_user(self, username, password, role):
         hash_value = generate_password_hash(password)

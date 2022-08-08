@@ -12,11 +12,10 @@
 ### Latest improvements
  - Users can be created
  - Users can sign in
- - Review creation under development
  - Authors can be created by admin
  - Books can be created by admin
  - Books can be searched by title
- - User can open a review form from search results
+ - User can create a review from search results
 
  ### Known flaws
  - No limit on characters in input/text fields

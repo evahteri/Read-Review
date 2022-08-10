@@ -12,5 +12,15 @@ class ReviewRepository:
         VALUES(:book_id, :review, :title, :rating, :user_id)"""
         self._db.session.execute(sql, values)
         self._db.session.commit()
+    
+    def get_recent_reviews(self):
+        sql = """SELECT R.id, B.title AS book_title, R.review , R.title AS review_title, R.rating, U.username 
+        FROM reviews R, users U, books B 
+        WHERE R.created_by_id = U.id 
+        AND R.book_id = B.id 
+        ORDER BY R.created_at 
+        DESC LIMIT 5
+        """
+        return self._db.session.execute(sql).fetchall()
 
 review_repository = ReviewRepository()

@@ -8,5 +8,80 @@ body {
     max-width: 50em;
 }
 h1 {
-    color: #555;
+    color: #444;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-areas:
+    "header header"
+    "left right"
+    "left_footer right_footer";
+    gap: 0.5em;
+    padding: 1em;
+}
+
+.grid-container > div {
+    padding: 0.5em;
+}
+
+
+.top5 {
+    grid-area: right;
+    line-height: 0.5;
+    background:  lightgray;
+    border-radius: 1em;
+    max-width: 35em;
+    min-width: auto;
+    
+}
+
+
+.header {
+    grid-area: header;
+    line-height: 1.5;
+    padding: 0.9em;
+    background:  lightgray;
+    border-radius: 1em;
+    
+}
+
+.info_left {
+    grid-area: left;
+    line-height: 1.5;
+    padding: 0.9em;
+    background:  lightgray;
+    border-radius: 1em;
+    min-width: auto;
+    max-width: 10em;
+  
+}
+
+.footer_left {
+    grid-area: left_footer;
+    line-height: 1.5;
+    padding: 0.9em;
+    background:  lightgray;
+    border-radius: 1em;
+  
+}
+
+
+.info_right {
+    grid-area: right;
+    line-height: 1.5;
+    padding: 0.9em;
+    background:  lightgray;
+    border-radius: 1em;
+  
+}
+
+.form {
+    background:  lightgray;
+    border-radius: 1em;
+    padding: 0.9em;
+}
+
+.header + .form {
+    margin: 1em;
 }

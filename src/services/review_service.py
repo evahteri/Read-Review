@@ -13,5 +13,8 @@ class ReviewService:
         user_id = self._user_repository.get_user_id()
         self._review_repository.create_review(title, review, rating, book_id, user_id)
         return True
+    
+    def get_recent_reviews(self):
+        return self._review_repository.get_recent_reviews()
 
 review_service = ReviewService()

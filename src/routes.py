@@ -8,7 +8,8 @@ from services.review_service import review_service
 
 @app.route("/")
 def index():
-    return render_template("homepage.html")
+    results = review_service.get_recent_reviews()
+    return render_template("homepage.html", results=results)
 
 
 @app.route("/new_author")

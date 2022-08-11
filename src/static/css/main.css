@@ -28,7 +28,7 @@ input {
 }
 
 .top5 {
-    line-height: 0.5;
+    line-height: 1em;
     background:  lightgray;
     border-radius: 1em;
     padding: 1em;

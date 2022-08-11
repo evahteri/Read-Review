@@ -22,5 +22,15 @@ class ReviewRepository:
         DESC LIMIT 5
         """
         return self._db.session.execute(sql).fetchall()
+    
+    def get_review_by_id(self, review_id):
+        values = {"review_id":review_id}
+        sql = """SELECT R.id, B.title AS book_title, R.review , R.title AS review_title, R.rating, U.username 
+        FROM reviews R, users U, books B 
+        WHERE R.created_by_id = U.id 
+        AND R.book_id = B.id
+        AND R.id =:review_id
+        """
+        return self._db.session.execute(sql,values).fetchone()
 
 review_repository = ReviewRepository()

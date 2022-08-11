@@ -16,5 +16,8 @@ class ReviewService:
     
     def get_recent_reviews(self):
         return self._review_repository.get_recent_reviews()
+    
+    def get_review_by_id(self, review_id):
+        return self._review_repository.get_review_by_id(review_id)
 
 review_service = ReviewService()

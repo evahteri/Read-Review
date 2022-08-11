@@ -124,3 +124,14 @@ def create_review(book_id):
 @app.route("/info")
 def info():
     return render_template("/info.html")
+
+@app.route("/reviews/<int:review_id>")
+def review(review_id):
+    result = review_service.get_review_by_id(review_id)
+    book_title = result.book_title
+    review_title = result.review_title
+    user = result.username
+    rating = result.rating
+    review = result.review
+    return render_template("review.html", book_title=book_title, review_title=review_title, 
+    user=user, rating=rating, review=review)

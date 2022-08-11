@@ -1,0 +1,19 @@
+<!doctype html>
+{% extends "layout.html" %}
+{% block title %}New review{% endblock %}
+{% block content %}
+<div class="info">
+    Written by {{ user }}
+    <br>
+    Rating {{ rating }}/5
+
+</div>
+<div class="info">
+    <h4>
+        {{ review_title }}
+    </h4>
+    <p>
+        {{ review }}
+    </p>
+</div>
+{% endblock %}

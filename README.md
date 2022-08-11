@@ -16,6 +16,7 @@
  - Books can be created by admin
  - Books can be searched by title
  - User can create a review from search results
+ - Recent reviews on homepage
 
  ### Known flaws
  - No limit on characters in input/text fields

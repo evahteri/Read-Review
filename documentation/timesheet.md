@@ -8,4 +8,5 @@
 | 3.8.   | 3     | Errors, css, security improvements                     |
 | 4.8.   | 4     | Search function, review functionality                  |
 | 8.8.   | 3     | Review creation                                        |
-| Total  | 25    |                                                        |
+| 11.8.  | 3     | CSS, info page, homepage touch-ups, review page        |
+| Total  | 28    |                                                        |

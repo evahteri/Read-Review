@@ -2,42 +2,42 @@
 {% extends "layout.html" %}
 {% block title %}Homepage{% endblock %}
 {% block content %}
-<div class="grid-container">
-    <div class="top5">
-        <h2>Most recent reviews</h2>
-        {% for result in results %}
-        <p>A review of a book {{ result.book_title }} from a user {{ result.username }}</p>
-        <p>Title: {{ result.review_title }}</p>
-        <p>Rating: {{ result.rating }}</p>
-        <a href="/reviews/{{ result.id }}"> Read</a>
-        <br>
-        {% endfor %}
-    </div>
-    <div class="info_left">
-        <h2>Welcome to Read Review</h2>
-        <p>Read Review is a website to create reviews of books</p>
-        {% if session.username %}
-        <p>You are signed in as {{ session.username }}</p>
-        <a href="/sign_out"> Sign out</a>
-        {% else %}
-        <a href="/sign_up">Sign up</a> <br>
-        <a href="/sign_in">Sign in</a>
+<div class="info">
+    <h2>Welcome to Read Review</h2>
+    <p>Read Review is a website to create reviews of books</p>
+    {% if session.username %}
+    <span class="material-icons">perm_identity</span>
+    <p>You are signed in as {{ session.username }}</p>
+    <a href="/sign_out"><span class="material-icons">logout</span></a>
+    <br>
+    <a href="/sign_out">Log out</a>
+    {% else %}
+    <a href="/sign_up">Sign up</a> <br>
+    <a href="/sign_in">Sign in</a>
+    {% endif %}
+    <p>Start by searching a book you want to review</p>
+    <form action="/book_search_results" method="GET">
+    <input type="text" name="query">
+    <button type="submit"><span class="material-icons">search</span></button>
+    </form>
+    {% if session.role == 1 %}
+</div>
+<div class="info">
+    <p>Choose admin function:</p>
+    <ul>
+        <li><a href="/new_author">Create an author</a></li>
+        <li><a href="/new_book">Add a new book</a></li>
         {% endif %}
-        <p>Start by searching a book you want to review</p>
-        <form action="/book_search_results" method="GET">
-        Search for books <input type="text" name="query">
-        <br>
-        <input type="submit" value="Search">
-        </form>
-        {% if session.role == 1 %}
-    </div>
-    <div class="footer_left">
-        <p>Choose admin function:</p>
-        <ul>
-            <li><a href="/new_author">Create an author</a></li>
-            <li><a href="/new_book">Add a new book</a></li>
-            {% endif %}
-        </ul>
-    </div>
+    </ul>
+</div>
+<div class="top5">
+    <h2>Most recent reviews</h2>
+    {% for result in results %}
+    <p>A review of a book {{ result.book_title }} from a user {{ result.username }}</p>
+    <p>Title: {{ result.review_title }}</p>
+    <p>Rating: {{ result.rating }}</p>
+    <a href="/reviews/{{ result.id }}"> Read</a>
+    <br>
+    {% endfor %}
 </div>
 {% endblock %}

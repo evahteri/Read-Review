@@ -1,44 +1,41 @@
 body {
     margin: auto;
     max-width: 45em;
-    font-family: "Times New Roman", Times, serif;
+    font-family: "Roboto Mono", serif;
     color: #444;
     line-height: 1.5;
     padding: 3em 3em;
     max-width: 50em;
 }
-h1 {
+a {
+    text-decoration: none;
     color: #444;
+    font-weight: bold;
 }
 
-.grid-container {
-    display: grid;
-    grid-template-areas:
-    "header header"
-    "left right"
-    "left_footer right_footer";
-    gap: 0.5em;
-    padding: 1em;
+button {
+    border: none;
+    border-radius: 0.5em;
+    font-family: "Roboto Mono", serif;
+
 }
 
-.grid-container > div {
-    padding: 0.5em;
+input {
+    border: none;
+    border-radius: 0.5em;
+    height: 2em;
+    font-family: "Roboto Mono", serif;
 }
-
 
 .top5 {
-    grid-area: right;
     line-height: 0.5;
     background:  lightgray;
     border-radius: 1em;
-    max-width: 35em;
-    min-width: auto;
+    padding: 1em;
     
 }
-
 
 .header {
-    grid-area: header;
     line-height: 1.5;
     padding: 0.9em;
     background:  lightgray;
@@ -46,31 +43,9 @@ h1 {
     
 }
 
-.info_left {
-    grid-area: left;
+.info {
     line-height: 1.5;
-    padding: 0.9em;
-    background:  lightgray;
-    border-radius: 1em;
-    min-width: auto;
-    max-width: 10em;
-  
-}
-
-.footer_left {
-    grid-area: left_footer;
-    line-height: 1.5;
-    padding: 0.9em;
-    background:  lightgray;
-    border-radius: 1em;
-  
-}
-
-
-.info_right {
-    grid-area: right;
-    line-height: 1.5;
-    padding: 0.9em;
+    padding: 1em;
     background:  lightgray;
     border-radius: 1em;
   
@@ -85,3 +60,35 @@ h1 {
 .header + .form {
     margin: 1em;
 }
+
+.header + .top5 {
+    margin: 1em;
+}
+
+.header + .info {
+    margin: 1em;
+}
+
+.form + .info {
+    margin: 1em;
+}
+
+.info + .info {
+    margin: 1em;
+}
+
+.top5 + .info {
+    margin: 1em;
+}
+
+.top5 + .header {
+    margin: 1em;
+}
+
+
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }

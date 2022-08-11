@@ -1,10 +1,19 @@
 <!doctype html>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto Mono">
 <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/main.css') }}">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Read Review - {% block title %}{% endblock %}</title>
   <div class="header">
     <h1>Read Review</h1>
-    <a href="/">Homepage</a>
+    <a href="/">
+      <span class="material-icons">home</span>
+    </a>
+    <a href="/info">
+      <span class="material-icons">info</span>
+    </a>
     {% with messages = get_flashed_messages() %}
     {% if messages %}
     <ul class=flashes>

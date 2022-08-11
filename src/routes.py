@@ -120,3 +120,7 @@ def create_review(book_id):
     review_service.create_review(title, review, rating, book_id)
     flash("Review created successfully!")
     return redirect("/")
+
+@app.route("/info")
+def info():
+    return render_template("/info.html")

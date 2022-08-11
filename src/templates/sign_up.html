@@ -2,36 +2,35 @@
 {% extends "layout.html" %}
 {% block title %}Sign up{% endblock %}
 {% block content %}
-<div class="grid-container">
-    <div class=info_left>
-        <form action="/create_user" method="POST">
-            <p>Create a new user</p>
-        <p>
-            Username <br>
-            <input type="text" name="username">
-        </p>
-        <p>
-            Password <br>
-            <input type="password" name="password">
-        </p>
-        <p>
-            Select a role <br>
-            <input type="radio" name="role" value="0" checked> User
-            <input type="radio" name="role" value="1" > Admin
-        </p>
-        <p>
-            <input type="submit" value="Create user">
-        </form>
-    </div>
-    <div class="info_right">
-        <h2>info</h2>
-        <p>Please input a safe password that includes at least one:</p>
-        <ul>
-            <li>Uppercase letter</li>
-            <li>Lowercase letter</li>
-            <li>Number</li>
-            <li>Special character</li>
-        </ul>
 
+<div class=form>
+    <form action="/create_user" method="POST">
+        <p>Create a new user</p>
+    <p>
+        Username <br>
+        <input type="text" name="username">
+    </p>
+    <p>
+        Password <br>
+        <input type="password" name="password">
+    </p>
+    <p>
+        Select a role <br>
+        <input type="radio" name="role" value="0" checked> User
+        <input type="radio" name="role" value="1" > Admin
+    </p>
+    <p>
+        <button type="submit">Create user</button>
+    </form>
+</div>
+<div class="info">
+    <span class="material-icons">info</span>
+    <p>Please input a safe password that includes at least one:</p>
+    <ul>
+        <li>Uppercase letter</li>
+        <li>Lowercase letter</li>
+        <li>Number</li>
+        <li>Special character</li>
+    </ul>
 </div>
 {% endblock %}

@@ -2,21 +2,31 @@
 {% extends "layout.html" %}
 {% block title %}New book{% endblock %}
 {% block content %}
-<h1>Add a new book</h1>
-<form action="/create_book" method="POST">
-<p>
-    Author first name <br>
-    <textarea name="author_first_name" cols="15" rows="1"></textarea>
-<p>
-    Author last name <br>
-    <textarea name="author_last_name" cols="15" rows="1"></textarea>
-<p>
-    Title <br>
-    <textarea name="title" cols="15" rows="1"></textarea>
-<p>
-<p>
+<div class="info">
+    <h2>Add a new book</h2>
+</div>
+<div class="form">
+    <form action="/create_book" method="POST">
+        <p>
+            Author first name
+        </p>     
+        <br>
+        <textarea name="author_first_name" cols="30" rows="2"></textarea>
+        <p>
+            Author last name
+        </p>
+        <br>
+        <textarea name="author_last_name" cols="30" rows="2"></textarea>
+        <p>
+            Title 
+        </p>
+        <br>
+        <textarea name="title" cols="30" rows="5"></textarea>
     <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
-</p>
-    <input type="submit" value="Add">
-</form>
+    <br>
+    <p> 
+        Add <button type="submit"><span class="material-icons">add_circle</span></button>
+    </p>
+    </form>
+</div>
 {% endblock %}

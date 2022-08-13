@@ -6,7 +6,9 @@ body {
     line-height: 1.5;
     padding: 3em 3em;
     max-width: 50em;
+    text-align: left;
 }
+
 a {
     text-decoration: none;
     color: #444;
@@ -16,10 +18,13 @@ a {
 
 button {
     border: none;
-    border-radius: 0.5em;
     font-family: "Roboto Mono", serif;
+    background-color: lightgrey;
+    color: #444;
+    vertical-align: middle;
 
 }
+
 
 input {
     border: none;

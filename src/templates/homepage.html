@@ -6,10 +6,11 @@
     <h2>Welcome to Read Review</h2>
     <p>Read Review is a website to create reviews of books</p>
     {% if session.username %}
-    <span class="material-icons">perm_identity</span>
-    <p>You are signed in as {{ session.username }}</p>
-    <a href="/sign_out"><span class="material-icons">logout</span></a>
-    <br>
+    <p>
+        <button><span class="material-icons">perm_identity</span></button>
+        You are signed in as {{ session.username }}
+    </p>
+    <a href="/sign_out"><button><span class="material-icons">logout</span></button></a>
     <a href="/sign_out">Log out</a>
     {% else %}
     <a href="/sign_up">Sign up</a> <br>

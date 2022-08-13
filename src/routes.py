@@ -51,6 +51,11 @@ def book_search_results():
     results = book_service.search_books(query)
     return render_template("book_results.html", results=results)
 
+@app.route("/review_search_results/<int:book_id>")
+def review_search_results(book_id):
+    book_id=book_id
+    results = review_service.get_reviews(book_id)
+    return render_template("review_results.html", results=results, book_id=book_id)
 
 @app.route("/sign_up")
 def sign_up():

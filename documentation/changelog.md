@@ -1,6 +1,6 @@
 | Feature                              | Progress         |
 | ------------------------------------ | ---------------- |
-| User can see all reviews             |  Not started     |
+| User can see all reviews             |  Finished        |
 | Admin can create new books           |  Finished        |
 | User can be created                  |  Finished        |
 | User can sign in                     |  Finished        |

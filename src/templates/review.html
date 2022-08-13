@@ -3,9 +3,10 @@
 {% block title %}New review{% endblock %}
 {% block content %}
 <div class="info">
+    Review of "{{ book_title }}"
+    <br>
     Written by {{ user }}
     <br>
-    Rating {{ rating }}/5
 
 </div>
 <div class="info">
@@ -15,5 +16,10 @@
     <p>
         {{ review }}
     </p>
+</div>
+<div class="info">
+
+    Rating {{ rating }}/5
+
 </div>
 {% endblock %}

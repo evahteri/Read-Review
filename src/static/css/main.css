@@ -27,6 +27,12 @@ input {
     font-family: "Roboto Mono", serif;
 }
 
+textarea {
+    border: none;
+    border-radius: 0.5em;
+    font-family: "Roboto Mono", serif;
+}
+
 .top5 {
     line-height: 1em;
     background:  lightgray;

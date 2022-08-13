@@ -32,5 +32,16 @@ class ReviewRepository:
         AND R.id =:review_id
         """
         return self._db.session.execute(sql,values).fetchone()
+    
+    def get_reviews(self, book_id):
+        values = {"book_id":book_id}
+        sql= """SELECT  R.id, B.title AS book_title, R.review, R.title AS review_title, R.rating, 
+        U.username, R.created_at
+        FROM reviews R, users U, books B
+        WHERE R.book_id = B.id
+        AND R.created_by_id = U.id
+        AND book_id =:book_id"""
+
+        return self._db.session.execute(sql, values).fetchall()
 
 review_repository = ReviewRepository()

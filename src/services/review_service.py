@@ -20,4 +20,7 @@ class ReviewService:
     def get_review_by_id(self, review_id):
         return self._review_repository.get_review_by_id(review_id)
 
+    def get_reviews(self, book_id):
+        return self._review_repository.get_reviews(book_id)
+
 review_service = ReviewService()

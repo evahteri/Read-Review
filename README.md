@@ -10,11 +10,7 @@
 
 
 ### Latest improvements
- - Users can be created
- - Users can sign in
- - Authors can be created by admin
- - Books can be created by admin
- - Books can be searched by title
+ - Books and reviews can be searched by title
  - User can create a review from search results
  - Recent reviews on homepage
 

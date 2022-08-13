@@ -1,0 +1,23 @@
+<!doctype html>
+{% extends "layout.html" %}
+{% block title %}Reviews{% endblock %}
+{% block content %}
+<h2>Reviews of this book</h2>
+{% if results %}
+    {% for result in results %}
+        <div class="info">
+            Title: {{ result.review_title }} <br>
+            Rating: {{ result.rating }}/5 <br>
+            Written by: {{ result.username }}<br>
+            <a href="/reviews/{{ result.id }}"> Read</a>
+        </div>
+    {% endfor %}
+{% else %}
+<div class="info">
+    <p>
+        There are no reviews of this book yet
+    </p>
+    <a href="/books/{{ book_id }}/new_review">Be the first to review this book</a>
+</div>
+{% endif %}
+{% endblock %}

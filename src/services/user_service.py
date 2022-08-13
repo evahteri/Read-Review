@@ -50,5 +50,8 @@ class UserService:
 
     def get_role(self, username):
         return self._user_repository.get_role(username)
+    
+    def get_user_id(self):
+        return self._user_repository.get_user_id()
 
 user_service = UserService()

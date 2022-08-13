@@ -4,7 +4,7 @@ from services.author_service import author_service
 from services.book_service import book_service
 from services.user_service import user_service
 from services.review_service import review_service
-
+from services.read_list_service import read_list_service
 
 @app.route("/")
 def index():
@@ -150,4 +150,23 @@ def delete_book(book_id):
         flash("Something went wrong")
         return redirect("/")
     flash("Not authorised to do this action")
+    return redirect("/")
+
+@app.route("/read_list")
+def read_list():
+    user_id=user_service.get_user_id()
+    return redirect(f"/read_list/{user_id}")
+
+@app.route("/read_list/<int:user_id>")
+def read_list_page(user_id):
+    user_id=user_id
+    results = read_list_service.get_read_list(user_id)
+    return render_template("read_list.html", results=results)
+
+@app.route("/add_read_list/<int:book_id>")
+def add_read_list(book_id):
+    book_id=book_id
+    user_id = user_service.get_user_id()
+    read_list_service.add_to_read_list(user_id, book_id)
+    flash("Book added to your read list!")
     return redirect("/")

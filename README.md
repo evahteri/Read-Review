@@ -14,6 +14,7 @@
  - User can create a review from search results
  - Recent reviews on homepage
  - Books can be deleted
+ - Read lists can be created
 
  ### Known flaws
  - No limit on characters in input/text fields

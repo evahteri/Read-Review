@@ -15,6 +15,9 @@
         <p>Please sign in to review</p>
         {% endif %}
         <a href="/review_search_results/{{ result.id }}">Show reviews</a>
+        {% if session.username %}
+            <a href="/add_read_list/{{ result.id }}">Add to my read list</a>
+        {% endif %}
         {% if session.role == 1 %}
         <a href="/delete_book/{{ result.id }}"><span class="material-icons">delete</span></a>
         {% endif %}

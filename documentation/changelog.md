@@ -8,6 +8,6 @@
 | User can create a review             |  Started         |
 | Star rating                          |  Started         |
 | Admin can delete reviews             |  Finished        |
-| User can create a read list          |  Not started     |
+| User can create a read list          |  Started         |
 | Other users can see other read lists |  Not started     |
 | Search function                      |  Partly done     |

@@ -10,4 +10,5 @@
 | 8.8.   | 3     | Review creation                                        |
 | 11.8.  | 3     | CSS, info page, homepage touch-ups, review page        |
 | 13.8.  | 3     | Reviews can be found via search, deleting books        |
-| Total  | 31    |                                                        |
+| 13.8.  | 3     | Read lists                                             |
+| Total  | 34    |                                                        |

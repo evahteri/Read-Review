@@ -1,5 +1,5 @@
 body {
-    margin: auto;
+    margin: 1em;
     max-width: 45em;
     font-family: "Roboto Mono", serif;
     color: #444;
@@ -12,6 +12,7 @@ a {
     color: #444;
     font-weight: bold;
 }
+
 
 button {
     border: none;
@@ -38,6 +39,7 @@ textarea {
     background:  lightgray;
     border-radius: 1em;
     padding: 1em;
+    margin: 1em;
     
 }
 
@@ -46,6 +48,7 @@ textarea {
     padding: 0.9em;
     background:  lightgray;
     border-radius: 1em;
+    margin: 1em;
     
 }
 
@@ -54,6 +57,7 @@ textarea {
     padding: 1em;
     background:  lightgray;
     border-radius: 1em;
+    margin: 1em;
   
 }
 
@@ -61,35 +65,9 @@ textarea {
     background:  lightgray;
     border-radius: 1em;
     padding: 0.9em;
-}
-
-.header + .form {
     margin: 1em;
 }
 
-.header + .top5 {
-    margin: 1em;
-}
-
-.header + .info {
-    margin: 1em;
-}
-
-.form + .info {
-    margin: 1em;
-}
-
-.info + .info {
-    margin: 1em;
-}
-
-.top5 + .info {
-    margin: 1em;
-}
-
-.top5 + .header {
-    margin: 1em;
-}
 
 
 .material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }

@@ -28,5 +28,12 @@ class BookRepository:
         AND B.id = :book_id"""
         return self._db.session.execute(sql, values).fetchone()
 
+    def delete_book(self, book_id):
+        values = {"book_id": book_id}
+        sql = """DELETE FROM books
+        WHERE id =:book_id"""
+        self._db.session.execute(sql, values)
+        self._db.session.commit()
+        return True
 
 book_repository = BookRepository()

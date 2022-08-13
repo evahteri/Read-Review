@@ -11,15 +11,15 @@ CREATE TABLE IF NOT EXISTS authors (
 );
 CREATE TABLE IF NOT EXISTS books (
     id SERIAL PRIMARY KEY,
-    author_id INTEGER REFERENCES authors,
+    author_id INTEGER REFERENCES authors ON DELETE CASCADE,
     title TEXT 
 );
 CREATE TABLE IF NOT EXISTS reviews (
     id SERIAL PRIMARY KEY,
-    book_id INTEGER REFERENCES books,
+    book_id INTEGER REFERENCES books ON DELETE CASCADE,
     review TEXT,
     title TEXT,
     rating INTEGER,
-    created_by_id INTEGER REFERENCES users,
+    created_by_id INTEGER REFERENCES users ON DELETE CASCADE,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );

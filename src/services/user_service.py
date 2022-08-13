@@ -48,5 +48,7 @@ class UserService:
         else:
             return False
 
+    def get_role(self, username):
+        return self._user_repository.get_role(username)
 
 user_service = UserService()

@@ -9,5 +9,5 @@
 | 4.8.   | 4     | Search function, review functionality                  |
 | 8.8.   | 3     | Review creation                                        |
 | 11.8.  | 3     | CSS, info page, homepage touch-ups, review page        |
-| 13.8.  | 3     | Reviews can be found via search                        |
+| 13.8.  | 3     | Reviews can be found via search, deleting books        |
 | Total  | 31    |                                                        |

@@ -43,5 +43,12 @@ class UserRepository:
     def sign_in(self, username, password):
         return self._check_username_and_password(username, password)
 
+    def get_role(self, username):
+        values = {"username":username}
+        sql = """SELECT role
+        FROM users
+        WHERE username=:username"""
+        role = self._db.session.execute(sql, values).fetchone()
+        return role[0]
 
 user_repository = UserRepository()

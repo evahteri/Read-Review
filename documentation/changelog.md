@@ -7,7 +7,7 @@
 | Different roles between users        |  Finished        |
 | User can create a review             |  Started         |
 | Star rating                          |  Started         |
-| Admin can delete reviews             |  Not started     |
+| Admin can delete reviews             |  Finished        |
 | User can create a read list          |  Not started     |
 | Other users can see other read lists |  Not started     |
 | Search function                      |  Partly done     |

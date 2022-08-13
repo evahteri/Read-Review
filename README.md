@@ -13,6 +13,7 @@
  - Books and reviews can be searched by title
  - User can create a review from search results
  - Recent reviews on homepage
+ - Books can be deleted
 
  ### Known flaws
  - No limit on characters in input/text fields

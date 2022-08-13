@@ -27,6 +27,9 @@ class BookService:
 
     def get_book_by_id(self, book_id):
         return self._book_repository.get_book_by_id(book_id)
+    
+    def delete_book(self, book_id):
+        return self._book_repository.delete_book(book_id)
 
 
 book_service = BookService()

@@ -140,3 +140,14 @@ def review(review_id):
     review = result.review
     return render_template("review.html", book_title=book_title, review_title=review_title, 
     user=user, rating=rating, review=review)
+
+@app.route("/delete_book/<int:book_id>", methods=["POST", "GET"])
+def delete_book(book_id):
+    if user_service.get_role(session["username"]) == 1:
+        if book_service.delete_book(book_id):
+            flash("Book deleted")
+            return redirect("/")
+        flash("Something went wrong")
+        return redirect("/")
+    flash("Not authorised to do this action")
+    return redirect("/")

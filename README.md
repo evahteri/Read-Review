@@ -14,14 +14,13 @@
  - User can create a review from search results
  - Recent reviews on homepage
  - Books can be deleted
- - Read lists can be created
+ - Read lists can be created and edited
 
  ### Known flaws
  - No limit on characters in input/text fields
  - Database accepts same author/book with different uppercase/lowercase letters
  - Books cannot be searched by author
  - No messages to users when new books or authors are created
- - No delete function from read list
 
 ## Main features
 

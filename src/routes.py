@@ -162,7 +162,7 @@ def read_list():
 def read_list_page(user_id):
     user_id=user_id
     results = read_list_service.get_read_list(user_id)
-    return render_template("read_list.html", results=results)
+    return render_template("read_list.html", results=results, user_id=user_id)
 
 @app.route("/add_read_list/<int:book_id>")
 def add_read_list(book_id):
@@ -173,3 +173,11 @@ def add_read_list(book_id):
         return redirect(session["url_search_results"])
     flash("Book already in your read list!")
     return redirect(session["url_search_results"])
+
+@app.route("/read_list/<int:user_id>/delete/<int:book_id>")
+def delete_from_read_list(user_id, book_id):
+    user_id = user_id
+    book_id=book_id
+    read_list_service.delete_from_read_list(user_id, book_id)
+    flash("Book deleted from your read list")
+    return redirect(f"/read_list/{user_id}")

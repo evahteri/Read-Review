@@ -8,8 +8,9 @@
 {% if results %}
     {% for result in results %}
         <div class="info">
-            Title: {{ result.title }} <br>
-            Author: {{ result.first_name }} {{ result.last_name }} <br>
+            <b>{{ result.title }}</b><br>
+            {{ result.first_name }} {{ result.last_name }} <br>
+            <a href="/read_list/{{ user_id }}/delete/{{ result.id }}"><button><span class="material-icons">delete</span></button></a>
         </div>
     {% endfor %}
 {% else %}

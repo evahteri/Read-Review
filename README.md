@@ -21,6 +21,7 @@
  - Database accepts same author/book with different uppercase/lowercase letters
  - Books cannot be searched by author
  - No messages to users when new books or authors are created
+ - No delete function from read list
 
 ## Main features
 

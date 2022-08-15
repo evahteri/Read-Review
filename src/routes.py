@@ -49,6 +49,7 @@ def create_book():
 def book_search_results():
     query = request.args["query"]
     results = book_service.search_books(query)
+    session["url_search_results"] = request.url
     return render_template("book_results.html", results=results)
 
 @app.route("/review_search_results/<int:book_id>")
@@ -167,6 +168,8 @@ def read_list_page(user_id):
 def add_read_list(book_id):
     book_id=book_id
     user_id = user_service.get_user_id()
-    read_list_service.add_to_read_list(user_id, book_id)
-    flash("Book added to your read list!")
-    return redirect("/")
+    if read_list_service.add_to_read_list(user_id, book_id):
+        flash("Book added to your read list!")
+        return redirect(session["url_search_results"])
+    flash("Book already in your read list!")
+    return redirect(session["url_search_results"])

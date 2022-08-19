@@ -17,9 +17,9 @@
  - Books can be deleted
  - Read lists can be created and edited
  - Forms look good on mobile
+ - Inputs are now checked better
 
  ### Known flaws
- - No limit on characters in input/text fields
  - Database accepts same author/book with different uppercase/lowercase letters
  - Books cannot be searched by author
  - No messages to users when new books or authors are created

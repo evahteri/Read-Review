@@ -11,4 +11,5 @@
 | 11.8.  | 3     | CSS, info page, homepage touch-ups, review page        |
 | 13.8.  | 3     | Reviews can be found via search, deleting books        |
 | 13.8.  | 3     | Read lists                                             |
+| 19.8.  | 3     | Check form inputs                                      |
 | Total  | 34    |                                                        |

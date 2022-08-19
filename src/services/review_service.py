@@ -8,6 +8,29 @@ class ReviewService:
             user_repository=default_user_repository):
         self._review_repository = review_repository
         self._user_repository = user_repository
+    
+    def check_review_length(self, review):
+        if len(review) < 2:
+            return False
+        if len(review) > 10000:
+            return False
+        return True
+    
+    def check_title_length(self, title):
+        if len(title) < 2:
+            return False
+        if len(title) > 100:
+            return False
+        return True
+    
+    def check_rating(self, rating):
+        if not rating:
+            return False
+        if rating < 0:
+            return False
+        if rating > 5:
+            return False
+        return True
         
     def create_review(self, title, review, rating, book_id):
         user_id = self._user_repository.get_user_id()

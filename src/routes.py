@@ -68,12 +68,13 @@ def create_user():
     username = request.form["username"]
     password = request.form["password"]
     role = request.form["role"]
-    if user_service.create_user(username, password, role) == "invalid username":
-        flash("Please enter a username that is longer than 2 characters")
-    if user_service.create_user(username, password, role) == "username exists":
+    if not user_service.check_username_validity(username):
+        flash("Username has to be longer than two characters and shorter than 50 characters.")
+        return redirect("/sign_up")
+    if not user_service.check_user_does_not_exist(username):
         flash("This username already exists")
         return redirect("/sign_up")
-    if user_service.create_user(username, password, role) == "invalid password":
+    if not user_service.check_password_validity(password):
         flash("""Please provide a password that is more than 8 characters long, 
         includes at least one number, one special character , 
         one lower and one uppercase character.""")
@@ -81,6 +82,8 @@ def create_user():
     if user_service.create_user(username, password, role):
         flash("User created successfully!")
         return redirect("/sign_in")
+    flash("Something went wrong")
+    return redirect("/sign_up")
 
 
 @app.route("/sign_out")
@@ -125,6 +128,15 @@ def create_review(book_id):
     review = request.form["review"]
     rating = request.form["rating"]
     book_id = book_id
+    if not review_service.check_review_length(review):
+        flash("Review has to be over two characters and under 10 0000 characters.")
+        return redirect(f"/books/{book_id}/new_review")
+    if not review_service.check_title_length(title):
+        flash("Title has to be over two characters and under 100 characters.")
+        return redirect(f"/books/{book_id}/new_review")
+    if not review_service.check_rating(rating):
+        flash("Invalid rating")
+        return redirect(f"/books/{book_id}/new_review")
     review_service.create_review(title, review, rating, book_id)
     flash("Review created successfully!")
     return redirect("/")

@@ -8,7 +8,7 @@ class UserService:
     def __init__(self, user_repository=default_user_repository):
         self._user_repository = user_repository
 
-    def _check_password_validity(self, password):
+    def check_password_validity(self, password):
         special_characters = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/",
                               ":", ";", "<", "=", ">", "?", "@", "[", "]",
                               "^", "_", "`", "{", "|", "}", "~", "."]
@@ -25,12 +25,12 @@ class UserService:
             valid = False
         return valid
 
-    def _check_user_does_not_exist(self, username):
+    def check_user_does_not_exist(self, username):
         if self._user_repository.search_user(username):
             return False
         return True
 
-    def _check_username_validity(self, username):
+    def check_username_validity(self, username):
         if len(username) < 3:
             return False
         if len(username) > 50:
@@ -38,14 +38,9 @@ class UserService:
         return True
 
     def create_user(self, username, password, role):
-        if not self._check_username_validity(username):
-            if not self._user_repository.search_user(username):
-                if self._check_password_validity(password):
-                    self._user_repository.create_user(username, password, role)
-                    return True
-                return "invalid password"
-            return "username exists"
-        return "invalid username"
+        self._user_repository.create_user(username, password, role)
+        return True
+
 
     def sign_in(self, username, password):
         user = self._user_repository.sign_in(username, password)

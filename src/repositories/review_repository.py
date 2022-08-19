@@ -8,8 +8,8 @@ class ReviewRepository:
         values = {"book_id":book_id, "review": review, 
         "rating":rating, "title":title, "user_id":user_id}
         sql = """INSERT INTO reviews (
-            book_id, review, title, rating, created_by_id)
-        VALUES(:book_id, :review, :title, :rating, :user_id)"""
+            book_id, review, title, rating, created_by_id, created_at)
+        VALUES(:book_id, :review, :title, :rating, :user_id, NOW())"""
         self._db.session.execute(sql, values)
         self._db.session.commit()
     

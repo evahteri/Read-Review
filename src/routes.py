@@ -68,6 +68,8 @@ def create_user():
     username = request.form["username"]
     password = request.form["password"]
     role = request.form["role"]
+    if user_service.create_user(username, password, role) == "invalid username":
+        flash("Please enter a username that is longer than 2 characters")
     if user_service.create_user(username, password, role) == "username exists":
         flash("This username already exists")
         return redirect("/sign_up")

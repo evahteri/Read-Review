@@ -35,5 +35,15 @@ class BookRepository:
         self._db.session.execute(sql, values)
         self._db.session.commit()
         return True
+    
+    def book_exists(self, author_first_name, author_last_name, title):
+        values = {"author_first_name":author_first_name, "author_last_name":author_last_name,
+        "title":title}
+        sql = """SELECT A.first_name, A.last_name, A.id, B.title, B.author_id
+        FROM authors A, books B
+        WHERE A.id = B.author_id
+        AND A.first_name=:author_first_name AND A.last_name=:author_last_name
+        AND B.title=:title"""
+        return self._db.session.execute(sql, values).fetchone()
 
 book_repository = BookRepository()

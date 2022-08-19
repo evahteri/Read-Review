@@ -24,6 +24,11 @@ class BookService:
 
     def search_books(self, query):
         return self._book_repository.search_books(query)
+    
+    def check_if_book_exists(self, author_first_name, author_last_name, title):
+        if self._book_repository.book_exists(author_first_name, author_last_name, title):
+            return True
+        return False
 
     def get_book_by_id(self, book_id):
         return self._book_repository.get_book_by_id(book_id)

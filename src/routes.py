@@ -38,6 +38,27 @@ def create_book():
     author_first_name = request.form["author_first_name"]
     author_last_name = request.form["author_last_name"]
     title = request.form["title"]
+    if book_service.check_if_book_exists(author_first_name, author_last_name, title):
+        flash("This book already exists.")
+        return redirect("/new_book")
+    if len(author_first_name) < 1:
+        flash("Missing author first name")
+        return redirect("/new_book")
+    if len(author_first_name) > 40:
+        flash("Author's first name too long")
+        return redirect("/new_book")
+    if len(author_last_name) < 1:
+        flash("Missing author last name")
+        return redirect("/new_book")
+    if len(author_last_name) > 40:
+        flash("Author's last name too long")
+        return redirect("/new_book")
+    if len(title) < 1:
+        flash("Missing title")
+        return redirect("/new_book")
+    if len(title) > 150:
+        flash("Title too long")
+        return redirect("/new_book")
     if session["csrf_token"] != request.form["csrf_token"]:
         abort(403)
     book_service.create_new_book(author_first_name, author_last_name, title)

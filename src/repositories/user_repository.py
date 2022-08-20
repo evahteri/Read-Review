@@ -50,5 +50,14 @@ class UserRepository:
         WHERE username=:username"""
         role = self._db.session.execute(sql, values).fetchone()
         return role[0]
+    
+    def search_users(self, query):
+        sql = """SELECT id, username 
+        FROM users
+        WHERE username LIKE :query
+        LIMIT 10"""
+        result = self._db.session.execute(sql, {"query": "%"+query+"%"})
+        users = result.fetchall()
+        return users
 
 user_repository = UserRepository()

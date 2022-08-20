@@ -9,5 +9,5 @@
 | Star rating                          |  Started         |
 | Admin can delete reviews             |  Finished        |
 | User can create a read list          |  Finished        |
-| Other users can see other read lists |  Not started     |
+| Other users can see other read lists |  Started         |
 | Search function                      |  Finished        |

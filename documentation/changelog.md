@@ -5,9 +5,9 @@
 | User can be created                  |  Finished        |
 | User can sign in                     |  Finished        |
 | Different roles between users        |  Finished        |
-| User can create a review             |  Started         |
+| User can create a review             |  Finished        |
 | Star rating                          |  Started         |
 | Admin can delete reviews             |  Finished        |
-| User can create a read list          |  Started         |
+| User can create a read list          |  Finished        |
 | Other users can see other read lists |  Not started     |
-| Search function                      |  Partly done     |
+| Search function                      |  Finished        |

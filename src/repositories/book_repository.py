@@ -14,9 +14,12 @@ class BookRepository:
 
     def search_books(self, query):
         sql = """SELECT A.first_name, A.last_name, B.id, B.title
-        FROM books B, authors A 
-        WHERE B.author_id = A.id 
-        AND B.title LIKE :query"""
+        FROM books B LEFT JOIN authors A 
+        ON B.author_id = A.id 
+        WHERE B.title LIKE :query
+        OR A.first_name LIKE :query
+        OR A.last_name LIKE :query
+        LIMIT 30"""
         result = self._db.session.execute(sql, {"query": "%"+query+"%"})
         books = result.fetchall()
         return books

@@ -18,10 +18,10 @@
  - Read lists can be created and edited
  - Forms look good on mobile
  - Inputs are now checked better
+ - Books can be found when author is searched
 
  ### Known flaws
  - Database accepts same author/book with different uppercase/lowercase letters
- - Books cannot be searched by author
  - No messages to users when new books or authors are created
 
 ## Main features

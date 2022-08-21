@@ -57,5 +57,11 @@ class UserService:
     
     def get_user_id(self):
         return self._user_repository.get_user_id()
+    
+    def get_username(self, id):
+        return self._user_repository.get_username(id)
+    
+    def search_users(self, query):
+        return self._user_repository.search_users(query)
 
 user_service = UserService()

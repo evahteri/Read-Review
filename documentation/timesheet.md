@@ -12,4 +12,6 @@
 | 13.8.  | 3     | Reviews can be found via search, deleting books        |
 | 13.8.  | 3     | Read lists                                             |
 | 19.8.  | 3     | Check form inputs                                      |
-| Total  | 34    |                                                        |
+| 20.8.  | 1     | User search for read lists                             |
+| 21.8.  | 1     | Social function to read lists                          |
+| Total  | 36    |                                                        |

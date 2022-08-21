@@ -216,3 +216,16 @@ def delete_from_read_list(user_id, book_id):
     read_list_service.delete_from_read_list(user_id, book_id)
     flash("Book deleted from your read list")
     return redirect(f"/read_list/{user_id}")
+
+@app.route("/user_results")
+def user_results():
+    query = request.args["query"]
+    results = user_service.search_users(query)
+    return render_template("user_results.html", results=results)
+
+@app.route("/view_read_list/<int:user_id>")
+def view_read_list(user_id):
+    user_id=user_id
+    username = user_service.get_username(user_id)
+    results = read_list_service.get_read_list(user_id)
+    return render_template("read_list_result.html", results=results, username=username)

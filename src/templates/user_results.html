@@ -1,0 +1,21 @@
+<!doctype html>
+{% extends "layout.html" %}
+{% block title %}Search results{% endblock %}
+{% block content %}
+<div class="info">
+    <h2>Search results</h2>
+</div>
+{% if session.username %}
+{% for result in results %}
+    <div class="info">
+        <b>{{ result.username }}</b> <br>
+        <a href="/view_read_list/{{ result.id }}">View read list</a>
+    </div>
+</div>
+{% endfor %}
+{% else %}
+<div class="info">
+    Please <a href="/sign_in">sign in</a>
+</div>
+{% endif %}
+{% endblock %}

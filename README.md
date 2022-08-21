@@ -11,14 +11,13 @@
 
 
 ### Latest improvements
- - Books and reviews can be searched by title
+ - Books and reviews can be searched by title and author
  - User can create a review from search results
  - Recent reviews on homepage
  - Books can be deleted
- - Read lists can be created and edited
+ - Read lists can be created and edited and searched by other users
  - Forms look good on mobile
  - Inputs are now checked better
- - Books can be found when author is searched
 
  ### Known flaws
  - Database accepts same author/book with different uppercase/lowercase letters

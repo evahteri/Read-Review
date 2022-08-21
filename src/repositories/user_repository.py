@@ -59,5 +59,12 @@ class UserRepository:
         result = self._db.session.execute(sql, {"query": "%"+query+"%"})
         users = result.fetchall()
         return users
-
+    
+    def get_username(self, id):
+        values = {"id":id}
+        sql = """SELECT username
+        FROM users
+        WHERE id =:id"""
+        result= self._db.session.execute(sql, values).fetchone()
+        return result.username
 user_repository = UserRepository()

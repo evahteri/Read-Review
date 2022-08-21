@@ -25,11 +25,12 @@ class ReviewService:
         return True
 
     def check_rating(self, rating):
+        print(rating)
         if not rating:
             return False
-        if rating < 0:
+        if int(rating) < 0:
             return False
-        if rating > 5:
+        if int(rating) > 5:
             return False
         return True
 

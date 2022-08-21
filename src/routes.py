@@ -77,7 +77,6 @@ def book_search_results():
 
 @app.route("/review_search_results/<int:book_id>")
 def review_search_results(book_id):
-    book_id = book_id
     results = review_service.get_reviews(book_id)
     return render_template("review_results.html", results=results, book_id=book_id)
 
@@ -101,7 +100,7 @@ def create_user():
         return redirect("/sign_up")
     if not user_service.check_password_validity(password):
         flash("""Please provide a password that is more than 8 characters long, 
-        includes at least one number, one special character , 
+        includes at least one number, one special character ,
         one lower and one uppercase character.""")
         return redirect("/sign_up")
     if user_service.create_user(username, password, role):
@@ -131,9 +130,8 @@ def sign_user_in():
     password = request.form["password"]
     if user_service.sign_in(username, password):
         return redirect("/")
-    if not user_service.sign_in(username, password):
-        flash("Invalid username or password")
-        return redirect("/sign_in")
+    flash("Invalid username or password")
+    return redirect("/sign_in")
 
 
 @app.route("/books/<int:book_id>/new_review")
@@ -152,7 +150,6 @@ def create_review(book_id):
     title = request.form["title"]
     review = request.form["review"]
     rating = request.form["rating"]
-    book_id = book_id
     if not review_service.check_review_length(review):
         flash("Review has to be over two characters and under 10 0000 characters.")
         return redirect(f"/books/{book_id}/new_review")
@@ -204,7 +201,6 @@ def read_list():
 
 @app.route("/read_list/<int:user_id>")
 def read_list_page(user_id):
-    user_id = user_id
     results = read_list_service.get_read_list(user_id)
     return render_template("read_list.html", results=results, user_id=user_id)
 
@@ -222,8 +218,6 @@ def add_read_list(book_id):
 
 @app.route("/read_list/<int:user_id>/delete/<int:book_id>")
 def delete_from_read_list(user_id, book_id):
-    user_id = user_id
-    book_id = book_id
     read_list_service.delete_from_read_list(user_id, book_id)
     flash("Book deleted from your read list")
     return redirect(f"/read_list/{user_id}")
@@ -238,7 +232,6 @@ def user_results():
 
 @app.route("/view_read_list/<int:user_id>")
 def view_read_list(user_id):
-    user_id = user_id
     username = user_service.get_username(user_id)
     results = read_list_service.get_read_list(user_id)
     return render_template("read_list_result.html", results=results, username=username)

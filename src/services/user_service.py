@@ -41,7 +41,6 @@ class UserService:
         self._user_repository.create_user(username, password, role)
         return True
 
-
     def sign_in(self, username, password):
         user = self._user_repository.sign_in(username, password)
         if user:
@@ -54,14 +53,15 @@ class UserService:
 
     def get_role(self, username):
         return self._user_repository.get_role(username)
-    
+
     def get_user_id(self):
         return self._user_repository.get_user_id()
-    
+
     def get_username(self, id):
         return self._user_repository.get_username(id)
-    
+
     def search_users(self, query):
         return self._user_repository.search_users(query)
+
 
 user_service = UserService()

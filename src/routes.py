@@ -6,6 +6,7 @@ from services.user_service import user_service
 from services.review_service import review_service
 from services.read_list_service import read_list_service
 
+
 @app.route("/")
 def index():
     results = review_service.get_recent_reviews()
@@ -73,11 +74,13 @@ def book_search_results():
     session["url_search_results"] = request.url
     return render_template("book_results.html", results=results)
 
+
 @app.route("/review_search_results/<int:book_id>")
 def review_search_results(book_id):
-    book_id=book_id
+    book_id = book_id
     results = review_service.get_reviews(book_id)
     return render_template("review_results.html", results=results, book_id=book_id)
+
 
 @app.route("/sign_up")
 def sign_up():
@@ -90,7 +93,8 @@ def create_user():
     password = request.form["password"]
     role = request.form["role"]
     if not user_service.check_username_validity(username):
-        flash("Username has to be longer than two characters and shorter than 50 characters.")
+        flash(
+            "Username has to be longer than two characters and shorter than 50 characters.")
         return redirect("/sign_up")
     if not user_service.check_user_does_not_exist(username):
         flash("This username already exists")
@@ -162,9 +166,11 @@ def create_review(book_id):
     flash("Review created successfully!")
     return redirect("/")
 
+
 @app.route("/info")
 def info():
     return render_template("/info.html")
+
 
 @app.route("/reviews/<int:review_id>")
 def review(review_id):
@@ -174,8 +180,9 @@ def review(review_id):
     user = result.username
     rating = result.rating
     review = result.review
-    return render_template("review.html", book_title=book_title, review_title=review_title, 
-    user=user, rating=rating, review=review)
+    return render_template("review.html", book_title=book_title, review_title=review_title,
+                           user=user, rating=rating, review=review)
+
 
 @app.route("/delete_book/<int:book_id>", methods=["POST", "GET"])
 def delete_book(book_id):
@@ -188,20 +195,23 @@ def delete_book(book_id):
     flash("Not authorised to do this action")
     return redirect("/")
 
+
 @app.route("/read_list")
 def read_list():
-    user_id=user_service.get_user_id()
+    user_id = user_service.get_user_id()
     return redirect(f"/read_list/{user_id}")
+
 
 @app.route("/read_list/<int:user_id>")
 def read_list_page(user_id):
-    user_id=user_id
+    user_id = user_id
     results = read_list_service.get_read_list(user_id)
     return render_template("read_list.html", results=results, user_id=user_id)
 
+
 @app.route("/add_read_list/<int:book_id>")
 def add_read_list(book_id):
-    book_id=book_id
+    book_id = book_id
     user_id = user_service.get_user_id()
     if read_list_service.add_to_read_list(user_id, book_id):
         flash("Book added to your read list!")
@@ -209,13 +219,15 @@ def add_read_list(book_id):
     flash("Book already in your read list!")
     return redirect(session["url_search_results"])
 
+
 @app.route("/read_list/<int:user_id>/delete/<int:book_id>")
 def delete_from_read_list(user_id, book_id):
     user_id = user_id
-    book_id=book_id
+    book_id = book_id
     read_list_service.delete_from_read_list(user_id, book_id)
     flash("Book deleted from your read list")
     return redirect(f"/read_list/{user_id}")
+
 
 @app.route("/user_results")
 def user_results():
@@ -223,9 +235,10 @@ def user_results():
     results = user_service.search_users(query)
     return render_template("user_results.html", results=results)
 
+
 @app.route("/view_read_list/<int:user_id>")
 def view_read_list(user_id):
-    user_id=user_id
+    user_id = user_id
     username = user_service.get_username(user_id)
     results = read_list_service.get_read_list(user_id)
     return render_template("read_list_result.html", results=results, username=username)

@@ -18,7 +18,7 @@ class UserRepository:
         values = {"username": session["username"]}
         sql = """SELECT id FROM users
         WHERE username=:username"""
-        result= self._db.session.execute(sql, values).fetchone()
+        result = self._db.session.execute(sql, values).fetchone()
         return result.id
 
     def create_user(self, username, password, role):
@@ -44,13 +44,13 @@ class UserRepository:
         return self._check_username_and_password(username, password)
 
     def get_role(self, username):
-        values = {"username":username}
+        values = {"username": username}
         sql = """SELECT role
         FROM users
         WHERE username=:username"""
         role = self._db.session.execute(sql, values).fetchone()
         return role[0]
-    
+
     def search_users(self, query):
         sql = """SELECT id, username 
         FROM users
@@ -59,12 +59,14 @@ class UserRepository:
         result = self._db.session.execute(sql, {"query": "%"+query+"%"})
         users = result.fetchall()
         return users
-    
+
     def get_username(self, id):
-        values = {"id":id}
+        values = {"id": id}
         sql = """SELECT username
         FROM users
         WHERE id =:id"""
-        result= self._db.session.execute(sql, values).fetchone()
+        result = self._db.session.execute(sql, values).fetchone()
         return result.username
+
+
 user_repository = UserRepository()

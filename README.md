@@ -18,6 +18,7 @@
  - Read lists can be created and edited and searched by other users
  - Forms look good on mobile
  - Inputs are now checked better
+ - Author creation removed, no need to create them separately
 
  ### Known flaws
  - Database accepts same author/book with different uppercase/lowercase letters

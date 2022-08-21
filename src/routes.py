@@ -13,22 +13,6 @@ def index():
     return render_template("homepage.html", results=results)
 
 
-@app.route("/new_author")
-def new_author():
-    return render_template("new_author.html")
-
-
-@app.route("/create_author", methods=["POST"])
-def create_author():
-    first_name = request.form["first_name"]
-    last_name = request.form["last_name"]
-    if session["csrf_token"] != request.form["csrf_token"]:
-        abort(403)
-    author_service.create_author(first_name, last_name)
-    flash("Author created succesfully!")
-    return redirect("/new_author")
-
-
 @app.route("/new_book")
 def new_book():
     return render_template("new_book.html")

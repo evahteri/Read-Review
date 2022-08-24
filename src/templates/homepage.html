@@ -33,7 +33,7 @@
 <div class="top5">
     <h2>Most recent reviews</h2>
     {% for result in results %}
-    <p>A review of a book {{ result.book_title }} from a user {{ result.username }}</p>
+    <p>Book: "{{ result.book_title }}" Review by: <b>{{ result.username }}</b>
     <p>Title: {{ result.review_title }}</p>
     <p>Rating: {{ result.rating }}</p>
     <a href="/reviews/{{ result.id }}"> Read</a>

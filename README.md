@@ -24,7 +24,6 @@
 
  ### Known flaws
  - Database accepts same author/book with different uppercase/lowercase letters
- - No messages to users when new books or authors are created
 
 ## Main features
 
@@ -39,15 +38,15 @@
  - Reviews are published for everyone to read
  - User must provide the author, name of the book, the written review and a star rating (out of five)
  - Reviews can be found via a search function
+ - "Newest reviews" are shown on the front page
  
  - ### Read list
  - User can add books they are planning to read to a read list
  
  - ### Social features
  - Users can read published reviews
+ - Users can see others' read lists
  
  ## Possible future features
- - "Newest reviews" are shown on the front page
- - Seeing other users' profiles to read their reviews and see their "read list"
  - Adding friends
  - Having a large database of books and authors to prevent dublicates

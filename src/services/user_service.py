@@ -62,6 +62,13 @@ class UserService:
 
     def search_users(self, query):
         return self._user_repository.search_users(query)
+    
+    def validate_user(self, user_id):
+        username = self._user_repository.get_username(user_id)
+        if username != session["username"]:
+            return False
+        return True
+
 
 
 user_service = UserService()

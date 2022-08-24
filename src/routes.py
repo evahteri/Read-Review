@@ -15,6 +15,9 @@ def index():
 
 @app.route("/new_book")
 def new_book():
+    if user_service.get_role(session["username"]) != 1:
+        flash("Not authorised to do this action")
+        return redirect("/")
     return render_template("new_book.html")
 
 
@@ -46,6 +49,9 @@ def create_book():
         return redirect("/new_book")
     if session["csrf_token"] != request.form["csrf_token"]:
         abort(403)
+    if user_service.get_role(session["username"]) != 1:
+        flash("Not authorised to do this action")
+        return redirect("/new_book")
     book_service.create_new_book(author_first_name, author_last_name, title)
     flash("Book created succesfully!")
     return redirect("/new_book")
@@ -143,6 +149,8 @@ def create_review(book_id):
     if not review_service.check_rating(rating):
         flash("Invalid rating")
         return redirect(f"/books/{book_id}/new_review")
+    if session["csrf_token"] != request.form["csrf_token"]:
+        abort(403)
     review_service.create_review(title, review, rating, book_id)
     flash("Review created successfully!")
     return redirect("/")
@@ -185,9 +193,11 @@ def read_list():
 
 @app.route("/read_list/<int:user_id>")
 def read_list_page(user_id):
-    results = read_list_service.get_read_list(user_id)
-    return render_template("read_list.html", results=results, user_id=user_id)
-
+    if user_service.validate_user(user_id):
+        results = read_list_service.get_read_list(user_id)
+        return render_template("read_list.html", results=results, user_id=user_id)
+    flash("Invalid user")
+    return redirect("/")
 
 @app.route("/add_read_list/<int:book_id>")
 def add_read_list(book_id):
@@ -200,11 +210,14 @@ def add_read_list(book_id):
     return redirect(session["url_search_results"])
 
 
+
 @app.route("/read_list/<int:user_id>/delete/<int:book_id>")
 def delete_from_read_list(user_id, book_id):
-    read_list_service.delete_from_read_list(user_id, book_id)
-    flash("Book deleted from your read list")
-    return redirect(f"/read_list/{user_id}")
+    if user_service.validate_user(user_id):
+        read_list_service.delete_from_read_list(user_id, book_id)
+        flash("Book deleted from your read list")
+        return redirect(f"/read_list/{user_id}")
+    return redirect("/sign_in")
 
 
 @app.route("/user_results")

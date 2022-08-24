@@ -22,7 +22,11 @@
     <p>
         There are no reviews of this book yet
     </p>
+    {% if session.username %}
     <a href="/books/{{ book_id }}/new_review">Be the first to review this book</a>
+    {% else %}
+    <a href="/sign_in">Sign in to review this book</a>
+    {% endif %}
 </div>
 {% endif %}
 {% endblock %}

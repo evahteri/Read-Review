@@ -15,6 +15,20 @@ a {
     font-weight: bold;
 }
 
+a.first_option {
+    padding-right: 10px;
+}
+
+a.options {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+a.icons {
+    padding-right: 10px;
+    padding-left: 10px;
+    vertical-align: middle;
+}
 
 button {
     border: none;

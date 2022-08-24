@@ -10,16 +10,21 @@
         Author: {{ result.first_name }} {{ result.last_name }}<br>
         Title: {{ result.title }} <br>
         {% if session.username %}
-            <a href="/books/{{ result.id }}/new_review">Review this book</a>
+            <a class="first_option" href="/books/{{ result.id }}/new_review">Review this book</a>
         {% else %}
         <p>Please sign in to review</p>
         {% endif %}
-        <a href="/review_search_results/{{ result.id }}">Show reviews</a>
+        <a class="options" href="/review_search_results/{{ result.id }}">Show reviews</a>
         {% if session.username %}
-            <a href="/add_read_list/{{ result.id }}">Add to my read list</a>
+        <a class="icons" href="/add_read_list/{{ result.id }}">
+            <span class="material-icons">menu_book</span>
+            <span class="material-icons">add_circle</span>
+        </a>
         {% endif %}
         {% if session.role == 1 %}
-        <a href="/delete_book/{{ result.id }}"><span class="material-icons">delete</span></a>
+            <a class="icons" href="/delete_book/{{ result.id }}">
+                <span class="material-icons">delete</span>
+            </a>
         {% endif %}
     </div>
 {% endfor %}

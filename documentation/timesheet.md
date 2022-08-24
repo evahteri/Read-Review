@@ -14,5 +14,5 @@
 | 19.8.  | 3     | Check form inputs                                      |
 | 20.8.  | 1     | User search for read lists                             |
 | 21.8.  | 1     | Social function to read lists                          |
-| 24.8.  | 3     | Touch-ups and security improvements                    |
-| Total  | 39    |                                                        |
+| 24.8.  | 5     | Touch-ups, styling and security improvements           |
+| Total  | 41    |                                                        |

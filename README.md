@@ -36,7 +36,7 @@
  - ### Reviews
  - Reviews of books can be written on a form
  - Reviews are published for everyone to read
- - User must provide the author, name of the book, the written review and a star rating (out of five)
+ - User must provide the author, name of the book, the written review and a rating out of five
  - Reviews can be found via a search function
  - "Newest reviews" are shown on the front page
  

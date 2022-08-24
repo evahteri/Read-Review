@@ -6,7 +6,7 @@
 | User can sign in                     |  Finished        |
 | Different roles between users        |  Finished        |
 | User can create a review             |  Finished        |
-| Star rating                          |  Started         |
+| Rating                               |  Finished        |
 | Admin can delete reviews             |  Finished        |
 | User can create a read list          |  Finished        |
 | Other users can see other read lists |  Finished        |

@@ -12,6 +12,9 @@
             Rating: {{ result.rating }}/5 <br>
             Written by: {{ result.username }}<br>
             <a href="/reviews/{{ result.id }}"> Read</a>
+            {% if session.role == 1%}
+            <a href="/delete_review/{{ result.id }}"><span class="material-icons">delete</span></a>
+            {% endif %}
         </div>
     {% endfor %}
 {% else %}

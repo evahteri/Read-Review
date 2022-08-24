@@ -46,6 +46,14 @@ class ReviewRepository:
         AND book_id =:book_id"""
 
         return self._db.session.execute(sql, values).fetchall()
+    
+    def delete_review(self, review_id):
+        values = {"review_id": review_id}
+        sql = """DELETE FROM reviews
+        WHERE id =:review_id"""
+        self._db.session.execute(sql, values)
+        self._db.session.commit()
+        return True
 
 
 review_repository = ReviewRepository()

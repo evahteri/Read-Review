@@ -220,3 +220,15 @@ def view_read_list(user_id):
     username = user_service.get_username(user_id)
     results = read_list_service.get_read_list(user_id)
     return render_template("read_list_result.html", results=results, username=username)
+
+
+@app.route("/delete_review/<int:review_id>", methods=["POST", "GET"])
+def delete_review(review_id):
+    if user_service.get_role(session["username"]) == 1:
+        if review_service.delete_review(review_id):
+            flash("Review deleted")
+            return redirect(session["url_search_results"])
+        flash("Something went wrong")
+        return redirect(session["url_search_results"])
+    flash("Not authorised to do this action")
+    return redirect(session["url_search_results"])

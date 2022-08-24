@@ -10,6 +10,7 @@
         <div class="info">
             <b>{{ result.title }}</b><br>
             {{ result.first_name }} {{ result.last_name }} <br>
+            <a href="/add_read_list/{{ result.id }}">Add to my read list</a>
         </div>
     {% endfor %}
 {% else %}

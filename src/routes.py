@@ -216,6 +216,7 @@ def user_results():
 
 @app.route("/view_read_list/<int:user_id>")
 def view_read_list(user_id):
+    session["url_search_results"] = request.url
     username = user_service.get_username(user_id)
     results = read_list_service.get_read_list(user_id)
     return render_template("read_list_result.html", results=results, username=username)

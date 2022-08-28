@@ -15,4 +15,5 @@
 | 20.8.  | 1     | User search for read lists                             |
 | 21.8.  | 1     | Social function to read lists                          |
 | 24.8.  | 5     | Touch-ups, styling and security improvements           |
-| Total  | 41    |                                                        |
+| 28.8.  | 2     | Usability improvements, profile page                   |
+| Total  | 43    |                                                        |

@@ -246,3 +246,12 @@ def delete_review(review_id):
         return redirect(session["url_search_results"])
     flash("Not authorised to do this action")
     return redirect(session["url_search_results"])
+
+@app.route("/profile")
+def profile():
+    user_id = user_service.get_user_id()
+    if not user_service.validate_user(user_id):
+        return redirect("/sign_in")
+    username = user_service.get_username(user_id)
+    role = user_service.get_role(username)
+    return render_template("profile.html", user_id=user_id, username=username, role=role)

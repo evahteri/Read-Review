@@ -1,0 +1,19 @@
+<!doctype html>
+{% extends "layout.html" %}
+{% block title %}Read Review{% endblock %}
+{% block content %}
+<div class="info">
+    <h2>Your profile</h2>
+    <p>
+        You are signed in as {{ username }}
+    </p>
+    <p>
+        {% if role == 1 %}
+        You have admin rights
+        {% endif %}
+    </p>
+    <a href="/sign_out"><button><span class="material-icons">logout</span></button></a>
+    <a href="/sign_out">Log out</a>
+</div>
+
+{% endblock %}

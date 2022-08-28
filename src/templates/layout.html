@@ -12,6 +12,15 @@
     <span class="material-icons">home</span>
   </a>
   {% if session["username"] %}
+  <a href="/profile">
+    <span class="material-icons">person</span>
+  </a>
+  {% else %}
+  <a href="/sign_in">
+    <span class="material-icons">person</span>
+  </a>
+  {% endif %}
+  {% if session["username"] %}
     <a href="/read_list">
       <span class="material-icons">menu_book</span>
     </a>

@@ -67,6 +67,7 @@ def book_search_results():
 
 @app.route("/review_search_results/<int:book_id>")
 def review_search_results(book_id):
+    session["url_search_results"] = request.url
     results = review_service.get_reviews(book_id)
     return render_template("review_results.html", results=results, book_id=book_id)
 

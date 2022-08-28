@@ -18,8 +18,8 @@
     {% endif %}
     <p>Start by searching books</p>
     <form action="/book_search_results" method="GET">
-    <input type="text" name="query">
-    <button type="submit"><span class="material-icons">search</span></button>
+        <input type="text" name="query">
+        <button type="submit"><span class="material-icons">search</span></button>
     </form>
     {% if session.role == 1 %}
 </div>

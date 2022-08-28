@@ -178,9 +178,9 @@ def delete_book(book_id):
     if user_service.get_role(session["username"]) == 1:
         if book_service.delete_book(book_id):
             flash("Book deleted")
-            return redirect("/")
+            return redirect(session["url_search_results"])
         flash("Something went wrong")
-        return redirect("/")
+        return redirect(session["url_search_results"])
     flash("Not authorised to do this action")
     return redirect("/")
 

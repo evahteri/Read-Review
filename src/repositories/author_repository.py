@@ -31,7 +31,7 @@ class AuthorRepository:
             self._db.session.execute(sql, values)
             self._db.session.commit()
         else:
-            print("Author already exists!")
+            return False
 
 
 author_repository = AuthorRepository()

@@ -51,9 +51,10 @@ class ReviewRepository:
         values = {"review_id": review_id}
         sql = """DELETE FROM reviews
         WHERE id =:review_id"""
-        self._db.session.execute(sql, values)
-        self._db.session.commit()
-        return True
+        if self._db.session.execute(sql, values):
+            self._db.session.commit()
+            return True
+        return False
     
     def get_user_reviews(self, user_id):
         values = {"user_id": user_id}

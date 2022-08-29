@@ -37,9 +37,10 @@ class BookRepository:
         values = {"book_id": book_id}
         sql = """DELETE FROM books
         WHERE id =:book_id"""
-        self._db.session.execute(sql, values)
-        self._db.session.commit()
-        return True
+        if self._db.session.execute(sql, values):
+            self._db.session.commit()
+            return True
+        return False
 
     def book_exists(self, author_first_name, author_last_name, title):
         values = {"author_first_name": author_first_name, "author_last_name": author_last_name,

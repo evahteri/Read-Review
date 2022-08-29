@@ -36,9 +36,10 @@ class ReadListRepository:
         sql = """DELETE FROM read_lists
         WHERE user_id=:user_id 
         AND book_id=:book_id"""
-        self._db.session.execute(sql, values)
-        self._db.session.commit()
-        return True
+        if self._db.session.execute(sql, values):
+            self._db.session.commit()
+            return True
+        return False
 
 
 read_list_repository = ReadListRepository()

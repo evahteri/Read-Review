@@ -238,7 +238,7 @@ def view_read_list(user_id):
 
 @app.route("/delete_review/<int:review_id>", methods=["POST", "GET"])
 def delete_review(review_id):
-    if user_service.get_role(session["username"]) == 1:
+    if user_service.get_role(session["username"]) == 1 or review_service.validate_review(review_id):
         if review_service.delete_review(review_id):
             flash("Review deleted")
             return redirect(session["url_search_results"])
@@ -255,3 +255,12 @@ def profile():
     username = user_service.get_username(user_id)
     role = user_service.get_role(username)
     return render_template("profile.html", user_id=user_id, username=username, role=role)
+
+@app.route("/user_reviews/<int:user_id>")
+def reviews(user_id):
+    if not user_service.validate_user(user_id):
+        flash("Invalid user")
+        return redirect("/")
+    session["url_search_results"] = request.url
+    results = review_service.get_user_reviews(user_id)
+    return render_template("user_reviews.html", results=results)

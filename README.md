@@ -12,6 +12,7 @@
 
 ### Latest improvements
  - Profile page added
+ - Users can see and delete their own reviews
  - Books and reviews can be searched by title and author
  - User can create a review from search results
  - Recent reviews on homepage

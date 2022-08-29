@@ -1,0 +1,24 @@
+<!doctype html>
+{% extends "layout.html" %}
+{% block title %}Read Review{% endblock %}
+{% block content %}
+<div class="info">
+    <h2>Your reviews</h2>
+</div>
+{% if results %}
+    {% for result in results %}
+        <div class="info">
+            <b>{{ result.book_title }}</b> <br>
+            Title: {{ result.review_title }} <br>
+            Rating: {{ result.rating }}/5 <br>
+            <a class="first_option" href="/reviews/{{ result.id }}"> Read</a>
+            <a class="icons" href="/delete_review/{{ result.id }}"><span class="material-icons">delete</span></a>
+        </div>
+    {% endfor %}
+{% else %}
+<div class="info">
+    <p>
+        You have not reviewed any books yet
+    </p>
+{% endif %}
+{% endblock %}

@@ -16,4 +16,5 @@
 | 21.8.  | 1     | Social function to read lists                          |
 | 24.8.  | 5     | Touch-ups, styling and security improvements           |
 | 28.8.  | 2     | Usability improvements, profile page                   |
-| Total  | 43    |                                                        |
+| 29.8.  | 2     | Signed in user can see and delete own reviews          |
+| Total  | 45    |                                                        |

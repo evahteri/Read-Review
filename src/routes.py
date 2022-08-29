@@ -91,7 +91,7 @@ def create_user():
         return redirect("/sign_up")
     if not user_service.check_password_validity(password):
         flash("""Please provide a password that is more than 8 characters long, 
-        includes at least one number, one special character ,
+        includes at least one number, one special character,
         one lower and one uppercase character.""")
         return redirect("/sign_up")
     if user_service.create_user(username, password, role):

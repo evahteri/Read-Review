@@ -48,6 +48,11 @@ input {
     font-family: "Roboto Mono", serif;
 }
 
+input[type=radio] {
+    accent-color: #444;
+    vertical-align: bottom;
+}
+
 textarea {
     border: none;
     border-radius: 0.5em;

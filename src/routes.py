@@ -95,7 +95,8 @@ def create_user():
         return redirect("/sign_up")
     if user_service.create_user(username, password, role):
         flash("User created successfully!")
-        return redirect("/sign_in")
+        user_service.sign_in(username, password)
+        return redirect("/")
     flash("Something went wrong")
     return redirect("/sign_up")
 

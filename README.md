@@ -11,22 +11,8 @@
 
 
 ### Latest improvements
- - Profile page added
- - Users can see and delete their own reviews
- - Books and reviews can be searched by title and author
- - User can create a review from search results
- - Recent reviews on homepage
- - Books can be deleted
- - Read lists can be created and edited and searched by other users
- - Forms look good on mobile
- - Inputs are now checked better
- - Author creation removed, no need to create them separately
- - Books can be added to your read list from other user's read list
- - Reviews can be deleted by admin
- 
+ - All features are finished and the app is functioning as intended
 
- ### Known flaws
- - Database accepts same author/book with different uppercase/lowercase letters
 
 ## Main features
 
@@ -34,17 +20,23 @@
  - User can be either an admin or a user
  - Users can create a new profile with a username and a password
  - Users can sign in using the created credentials
- - Admin has more rights than a user: e.g. to delete old reviews 
+ - Admin has more rights than a user: e.g. to delete old reviews
+
+ - ### Books
+ - Admin user can create new books
+ - Books can be searched
+ - Admin can delete existing books
  
  - ### Reviews
  - Reviews of books can be written on a form
  - Reviews are published for everyone to read
- - User must provide the author, name of the book, the written review and a rating out of five
+ - User must provide a written review and a rating out of five
  - Reviews can be found via a search function
  - "Newest reviews" are shown on the front page
  
  - ### Read list
  - User can add books they are planning to read to a read list
+ - Read list can be edited
  
  - ### Social features
  - Users can read published reviews

@@ -13,7 +13,6 @@ class BookRepository:
         self._db.session.commit()
 
     def search_books(self, query):
-        
         sql = """SELECT A.first_name, A.last_name, B.id, B.title
         FROM books B LEFT JOIN authors A 
         ON B.author_id = A.id 
@@ -21,7 +20,8 @@ class BookRepository:
         OR LOWER(A.first_name) LIKE :query
         OR LOWER(A.last_name) LIKE :query
         LIMIT 30"""
-        result = self._db.session.execute(sql, {"query": "%"+query.lower()+"%"})
+        result = self._db.session.execute(
+            sql, {"query": "%"+query.lower()+"%"})
         books = result.fetchall()
         return books
 

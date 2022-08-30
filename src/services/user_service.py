@@ -48,8 +48,7 @@ class UserService:
             session["role"] = user.role
             session["csrf_token"] = secrets.token_hex(16)
             return True
-        else:
-            return False
+        return False
 
     def get_role(self, username):
         return self._user_repository.get_role(username)
@@ -57,18 +56,17 @@ class UserService:
     def get_user_id(self):
         return self._user_repository.get_user_id()
 
-    def get_username(self, id):
-        return self._user_repository.get_username(id)
+    def get_username(self, user_id):
+        return self._user_repository.get_username(user_id)
 
     def search_users(self, query):
         return self._user_repository.search_users(query)
-    
+
     def validate_user(self, user_id):
         username = self._user_repository.get_username(user_id)
         if username != session["username"]:
             return False
         return True
-
 
 
 user_service = UserService()

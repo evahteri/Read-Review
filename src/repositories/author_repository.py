@@ -17,9 +17,9 @@ class AuthorRepository:
         WHERE first_name=:first_name AND last_name=:last_name"""
         return self._db.session.execute(sql, values).fetchone()[0]
 
-    def get_author_by_id(self, id):
-        values = {"id": id}
-        sql = """SELECT first_name, last_name FROM authors WHERE id=:id"""
+    def get_author_by_id(self, author_id):
+        values = {"author_id": author_id}
+        sql = """SELECT first_name, last_name FROM authors WHERE id=:author_id"""
         return self._db.session.execute(sql, values).fetchall()
 
     def create_author(self, first_name, last_name):
@@ -30,8 +30,8 @@ class AuthorRepository:
             VALUES (:first_name, :last_name)"""
             self._db.session.execute(sql, values)
             self._db.session.commit()
-        else:
-            return False
+            return True
+        return False
 
 
 author_repository = AuthorRepository()

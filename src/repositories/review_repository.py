@@ -15,7 +15,7 @@ class ReviewRepository:
         self._db.session.commit()
 
     def get_recent_reviews(self):
-        sql = """SELECT R.id, B.title AS book_title, R.review , 
+        sql = """SELECT R.id, B.title AS book_title, R.review ,
         R.title AS review_title, R.rating, U.username
         FROM reviews R, users U, books B 
         WHERE R.created_by_id = U.id 
@@ -46,7 +46,7 @@ class ReviewRepository:
         AND book_id =:book_id"""
 
         return self._db.session.execute(sql, values).fetchall()
-    
+
     def delete_review(self, review_id):
         values = {"review_id": review_id}
         sql = """DELETE FROM reviews
@@ -55,7 +55,7 @@ class ReviewRepository:
             self._db.session.commit()
             return True
         return False
-    
+
     def get_user_reviews(self, user_id):
         values = {"user_id": user_id}
         sql = """SELECT  R.id, B.title AS book_title, R.review, R.title AS review_title, R.rating,
@@ -66,7 +66,7 @@ class ReviewRepository:
         AND R.created_by_id =:user_id"""
 
         return self._db.session.execute(sql, values).fetchall()
-    
+
     def validate_review(self, review_id, user_id):
         values = {"review_id": review_id, "user_id": user_id}
         sql = """SELECT  R.id, B.title AS book_title, R.review, R.title AS review_title, R.rating,

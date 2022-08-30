@@ -1,6 +1,5 @@
 from flask import render_template, request, redirect, session, abort, flash
 from app import app
-from services.author_service import author_service
 from services.book_service import book_service
 from services.user_service import user_service
 from services.review_service import review_service
@@ -90,7 +89,7 @@ def create_user():
         flash("This username already exists")
         return redirect("/sign_up")
     if not user_service.check_password_validity(password):
-        flash("""Please provide a password that is more than 8 characters long, 
+        flash("""Please provide a password that is more than 8 characters long,
         includes at least one number, one special character,
         one lower and one uppercase character.""")
         return redirect("/sign_up")
@@ -139,9 +138,9 @@ def new_review(book_id):
 @app.route("/books/<int:book_id>/create_review", methods=["POST"])
 def create_review(book_id):
     title = request.form["title"]
-    review = request.form["review"]
+    review_text = request.form["review"]
     rating = request.form["rating"]
-    if not review_service.check_review_length(review):
+    if not review_service.check_review_length(review_text):
         flash("Review has to be over two characters and under 10 0000 characters.")
         return redirect(f"/books/{book_id}/new_review")
     if not review_service.check_title_length(title):
@@ -152,7 +151,7 @@ def create_review(book_id):
         return redirect(f"/books/{book_id}/new_review")
     if session["csrf_token"] != request.form["csrf_token"]:
         abort(403)
-    review_service.create_review(title, review, rating, book_id)
+    review_service.create_review(title, review_text, rating, book_id)
     flash("Review created successfully!")
     return redirect("/")
 
@@ -169,9 +168,9 @@ def review(review_id):
     review_title = result.review_title
     user = result.username
     rating = result.rating
-    review = result.review
+    review_text = result.review
     return render_template("review.html", book_title=book_title, review_title=review_title,
-                           user=user, rating=rating, review=review)
+                           user=user, rating=rating, review=review_text)
 
 
 @app.route("/delete_book/<int:book_id>", methods=["POST", "GET"])
@@ -200,16 +199,15 @@ def read_list_page(user_id):
     flash("Invalid user")
     return redirect("/")
 
+
 @app.route("/add_read_list/<int:book_id>")
 def add_read_list(book_id):
-    book_id = book_id
     user_id = user_service.get_user_id()
     if read_list_service.add_to_read_list(user_id, book_id):
         flash("Book added to your read list!")
         return redirect(session["url_search_results"])
     flash("Book already in your read list!")
     return redirect(session["url_search_results"])
-
 
 
 @app.route("/read_list/<int:user_id>/delete/<int:book_id>")
@@ -247,6 +245,7 @@ def delete_review(review_id):
     flash("Not authorised to do this action")
     return redirect(session["url_search_results"])
 
+
 @app.route("/profile")
 def profile():
     user_id = user_service.get_user_id()
@@ -255,6 +254,7 @@ def profile():
     username = user_service.get_username(user_id)
     role = user_service.get_role(username)
     return render_template("profile.html", user_id=user_id, username=username, role=role)
+
 
 @app.route("/user_reviews/<int:user_id>")
 def reviews(user_id):

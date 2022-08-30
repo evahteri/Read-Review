@@ -12,15 +12,15 @@ class BookService:
 
     def create_new_book(self, author_first_name, author_last_name, title):
         if self._author_repository.check_if_author_exists(author_first_name, author_last_name):
-            id = self._author_repository.get_author_id(
+            author_id = self._author_repository.get_author_id(
                 author_first_name, author_last_name)
-            self._book_repository.create_book(id, title)
+            self._book_repository.create_book(author_id, title)
         else:
             self._author_repository.create_author(
                 author_first_name, author_last_name)
-            id = self._author_repository.get_author_id(
+            author_id = self._author_repository.get_author_id(
                 author_first_name, author_last_name)
-            self._book_repository.create_book(id, title)
+            self._book_repository.create_book(author_id, title)
 
     def search_books(self, query):
         return self._book_repository.search_books(query)

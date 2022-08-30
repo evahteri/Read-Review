@@ -54,17 +54,17 @@ class UserRepository:
     def search_users(self, query):
         sql = """SELECT id, username
         FROM users
-        WHERE username LIKE :query
+        WHERE LOWER(username) LIKE :query
         LIMIT 10"""
-        result = self._db.session.execute(sql, {"query": "%"+query+"%"})
+        result = self._db.session.execute(sql, {"query": "%"+query.lower()+"%"})
         users = result.fetchall()
         return users
 
-    def get_username(self, id):
-        values = {"id": id}
+    def get_username(self, user_id):
+        values = {"user_id": user_id}
         sql = """SELECT username
         FROM users
-        WHERE id =:id"""
+        WHERE id =:user_id"""
         result = self._db.session.execute(sql, values).fetchone()
         return result.username
 

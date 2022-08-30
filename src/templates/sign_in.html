@@ -3,7 +3,7 @@
 {% block title %}Sign in{% endblock %}
 {% block content %}
 <div class="form">
-    <h1>Sign in</h1>
+    <h2>Sign in</h2>
     <form action="/sign_user_in" method="POST">
     <p>
         Username <br>
@@ -16,5 +16,8 @@
     <p>
         <input type="submit" value="Sign in">
     </form>
+    <p>
+        Don't have an account yet? <a href="/sign_up">Sign up</a>
+    </p>
 </div>
 {% endblock %}

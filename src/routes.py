@@ -1,4 +1,5 @@
 from flask import render_template, request, redirect, session, abort, flash
+from werkzeug.exceptions import HTTPException
 from app import app
 from services.book_service import book_service
 from services.user_service import user_service
@@ -127,13 +128,16 @@ def sign_user_in():
 
 @app.route("/books/<int:book_id>/new_review")
 def new_review(book_id):
-    book = book_service.get_book_by_id(book_id)
-    author_first_name = book.first_name
-    author_last_name = book.last_name
-    title = book.title
-    return render_template("new_review.html", book_id=book_id,
-                           author_first_name=author_first_name,
-                           author_last_name=author_last_name, title=title)
+    if book_service.get_book_by_id(book_id):
+        book = book_service.get_book_by_id(book_id)
+        author_first_name = book.first_name
+        author_last_name = book.last_name
+        title = book.title
+        return render_template("new_review.html", book_id=book_id,
+                            author_first_name=author_first_name,
+                            author_last_name=author_last_name, title=title)
+    flash("No book found")
+    return redirect("/")
 
 
 @app.route("/books/<int:book_id>/create_review", methods=["POST"])
@@ -164,15 +168,17 @@ def info():
 
 @app.route("/reviews/<int:review_id>")
 def review(review_id):
-    result = review_service.get_review_by_id(review_id)
-    book_title = result.book_title
-    review_title = result.review_title
-    user = result.username
-    rating = result.rating
-    review_text = result.review
-    return render_template("review.html", book_title=book_title, review_title=review_title,
-                           user=user, rating=rating, review=review_text)
-
+    if review_service.get_review_by_id(review_id):
+        result = review_service.get_review_by_id(review_id)
+        book_title = result.book_title
+        review_title = result.review_title
+        user = result.username
+        rating = result.rating
+        review_text = result.review
+        return render_template("review.html", book_title=book_title, review_title=review_title,
+                            user=user, rating=rating, review=review_text)
+    flash("No review found")
+    return redirect("/")
 
 @app.route("/delete_book/<int:book_id>", methods=["POST", "GET"])
 def delete_book(book_id):
@@ -204,11 +210,14 @@ def read_list_page(user_id):
 @app.route("/add_read_list/<int:book_id>")
 def add_read_list(book_id):
     user_id = user_service.get_user_id()
-    if read_list_service.add_to_read_list(user_id, book_id):
-        flash("Book added to your read list!")
+    if book_service.get_book_by_id(book_id):
+        if read_list_service.add_to_read_list(user_id, book_id):
+            flash("Book added to your read list!")
+            return redirect(session["url_search_results"])
+        flash("Book already in your read list!")
         return redirect(session["url_search_results"])
-    flash("Book already in your read list!")
-    return redirect(session["url_search_results"])
+    flash("No book found")
+    return redirect("/")
 
 
 @app.route("/read_list/<int:user_id>/delete/<int:book_id>")
@@ -265,3 +274,25 @@ def reviews(user_id):
     session["url_search_results"] = request.url
     results = review_service.get_user_reviews(user_id)
     return render_template("user_reviews.html", results=results)
+
+@app.errorhandler(KeyError)
+def handle_exception(e):
+    if isinstance(e, HTTPException):
+        return e
+    flash(f"Invalid {e}. Please check the URL and make sure you are signed in.")
+    return redirect("/")
+
+@app.errorhandler(405)
+def method_not_allowed(e):
+    flash("Method not allowed. Please check the URL and try again.")
+    return redirect("/")
+
+@app.errorhandler(400)
+def bad_request(e):
+    flash("Bad request. Please check the URL and try again.")
+    return redirect("/")
+
+@app.errorhandler(404)
+def bad_request(e):
+    flash("Please check the URL.")
+    return redirect("/")

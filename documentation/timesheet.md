@@ -18,4 +18,5 @@
 | 28.8.  | 2     | Usability improvements, profile page                   |
 | 29.8.  | 2     | Signed in user can see and delete own reviews          |
 | 30.8.  | 2     | Sign in automatically after sign up, touch ups         |
-| Total  | 47    |                                                        |
+| 31.8.  | 2     | Error handling                                         |
+| Total  | 49    |                                                        |

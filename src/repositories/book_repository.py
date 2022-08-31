@@ -31,7 +31,10 @@ class BookRepository:
         FROM books B, authors A
         WHERE B.author_id = A.id
         AND B.id = :book_id"""
-        return self._db.session.execute(sql, values).fetchone()
+        try:
+            return self._db.session.execute(sql, values).fetchone()
+        except AttributeError:
+            return False
 
     def delete_book(self, book_id):
         values = {"book_id": book_id}

@@ -34,7 +34,11 @@ class ReviewRepository:
         AND R.book_id = B.id
         AND R.id =:review_id
         """
-        return self._db.session.execute(sql, values).fetchone()
+        try:
+            return self._db.session.execute(sql, values).fetchone()
+        except AttributeError:
+            return False
+
 
     def get_reviews(self, book_id):
         values = {"book_id": book_id}
